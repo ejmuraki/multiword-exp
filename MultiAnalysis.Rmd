@@ -1,0 +1,107 @@
+---
+title: "Multiword Analyses"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(psychometric)
+library(moments)
+```
+
+```{r organize output}
+#Create paths
+path_in = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Input"
+
+path_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Output"
+
+figures_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Figures"
+
+#define date
+date = "2022.02.01"
+```
+
+```{r read data}
+ratings_long <- read_csv(file = file.path(path_in, "Ratings_long_02.01.2022.csv"))
+ppt_demos <- read_csv(file = file.path(path_in, "Ppt_Demographics_Exclusion.csv"))
+expression_coding <- read_csv(file = file.path(path_in, "Multiword_expression_categories.csv"))
+
+```
+
+```{r describe participant exclusions}
+#Get exclusion information 
+exclusion_stats <- ppt_demos %>% 
+  summarise(Exclude_Incomplete = sum(Incomplete > .67), Exclude_Thirty_Plus = sum(Thirty_plus == TRUE & Incomplete < .67), Exclude_Correlation = sum(Correlation < 0.2 & Thirty_plus == FALSE, na.rm = TRUE), Exclude_Correlation_NA = sum(is.na(Correlation) & Incomplete < .67 & Thirty_plus == FALSE))
+
+#Get total number of exclusions
+total_excludes <- exclusion_stats %>% 
+  summarise(Total_Excluded = sum(Exclude_Incomplete, Exclude_Thirty_Plus, Exclude_Correlation, Exclude_Correlation_NA))
+
+#Get total number of participants in dataset
+ppt_totals <-as.data.frame(table(ratings_long$Participant))
+```
+
+# Results
+
+The data were cleaned to screen for invalid responses (e.g., inattentive participants, bot responses) in the online questionnaire. First, we excluded participants who completed less than 33% of the questionnaire, *n* = `r exclusion_stats$Exclude_Incomplete`. We then excluded participants who provided the same rating for 30 expressions in a row, *n* = `r exclusion_stats$Exclude_Thirty_Plus`. Finally, each participants' ratings on the control expressions were were correlated with the existing concreteness ratings for those expressions. Any participant whose correlation was less than r = 0.20 or whose correlation we were unable to calculate due to lack of control word ratings and/or the same rating being provided for every control word were excluded, *n* = `r exclusion_stats$Exclude_Correlation + exclusion_stats$Exclude_Correlation_NA`. A total of `r total_excludes$Total_Excluded` participants were removed via these data cleaning steps, leaving `r nrow(ppt_totals)` participants remaining in our data analysis. Table 1 provides the exclusions by recruitment platform and demographic data of the retained sample. 
+
+```{r get reliability data}
+#Calculate ICC using function from psychometric package based on Brysbaert et al. 2019 
+icc1 <-ICC1.lme(Rating, Expression, data = ratings_long)
+icc2 <-ICC2.lme(Rating, Expression, data = ratings_long)
+```
+
+The raw data and concreteness ratings are available at: https://osf.io/xcezv/. We computed two intraclass correlation coefficients (ICC) based on the word ratings from all participants (Brysbaert et al., 2019; Fletcher, 2015). The first ICC (representing the average correlation of the expression ratings between participants) was `r round(icc1, digits = 2)`. The second ICC (representing the anticipated correlation between the mean ratings of the existing participants and the mean ratings that would be anticipated if we collected an equivalent group of participants) was `r round(icc2, digits = 2)`.
+
+```{r combine ratings data and create mean}
+#Get concreteness means and standard deviation
+ratings_complete_new <- ratings_long %>% 
+  dplyr::group_by(Expression) %>%
+  dplyr::filter(Rating >= 0 & Rating < 6) %>%
+  dplyr::summarize(Mean_C = mean(Rating), SD_C = sd(Rating), N = length(Rating[!is.na(Rating)]), Min = min(Rating), Max = max(Rating))
+
+#Get unknown count
+ratings_unknown_new <- ratings_long %>% 
+  dplyr::group_by(Expression) %>% 
+  dplyr::filter(Rating > 0) %>%
+  dplyr::summarize(Unknown = length(Rating[Rating == 6]))
+
+#Combine means and unknown count
+mean_ratings <- left_join(ratings_unknown_new, ratings_complete_new, by = "Expression")
+
+mean_ratings_complete <- mean_ratings %>% 
+  filter(N >=10)
+
+mean_ratings_unknown <- mean_ratings %>% 
+  filter(N < 10 & Unknown >= 8)
+
+mean_ratings_incomplete <- mean_ratings %>% 
+  filter(N < 10 & Unknown < 8)
+
+#Combine expression categories with ratings
+master <- left_join(expression_coding, mean_ratings, by = "Expression")
+
+#Get only complete ratings
+master_complete <- master %>% 
+  filter(N >=10)
+```
+
+```{r descriptive statistics}
+#Calculate descriptive stats on mean ratings
+descriptives <- master_complete %>% 
+  summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), min = min(Mean_C), max = max(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
+
+```
+
+```{r plot rating distribution}
+#Create histogram of all items
+p1 <- ggplot(expression_analysis, aes(x = Mean)) + geom_histogram(bins = 20, fill = "#808080", color = "#e9ecef") + theme_apa() + labs(x = "Concreteness Rating", y = "Count") + scale_y_continuous(expand = c(0,0))
+
+expression_type_plot <- expression_analysis %>% 
+  select(Expression, Code, Mean) %>% 
+  drop_na()
+
+p2 <- ggplot(expression_type_plot, aes(x = Mean, group = Code, fill = Code)) + geom_density(alpha = 0.5) + theme_apa() + xlab("Concreteness Rating") + ylab("Density") + labs(fill = "Expression Type") + theme(legend.position = c(0.85, 0.85)) + coord_cartesian(xlim = c(1,5), ylim = c(0, 0.75), expand = FALSE)
+```
+
