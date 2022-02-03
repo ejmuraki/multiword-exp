@@ -6,8 +6,10 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(psychometric)
 library(moments)
+library(arsenal)#for dataframe comparisons
+library(jtools)#for theme_apa function for plots
+library(apaTables)#for APA format tables
 ```
 
 ```{r organize output}
@@ -19,89 +21,209 @@ path_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research P
 figures_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Figures"
 
 #define date
-date = "2022.02.01"
+date = "2022.02.03"
 ```
 
 ```{r read data}
-ratings_long <- read_csv(file = file.path(path_in, "Ratings_long_02.01.2022.csv"))
-ppt_demos <- read_csv(file = file.path(path_in, "Ppt_Demographics_Exclusion.csv"))
+ratings_long <- read_csv(file = file.path(path_in, "Ratings_long_02.03.2022.csv"))
+ppt_exclusions <- read_csv(file = file.path(path_in, "Ppt_Exclusions.csv"))
 expression_coding <- read_csv(file = file.path(path_in, "Multiword_expression_categories.csv"))
-
+ratings_icc <- read_csv(file = file.path(path_in, "Ratings_ICC_02.03.2022.csv"))
+brysbaert_concreteness <- read_csv(file = file.path(path_in, "Brysbaert_Kuperman_Conc.csv")) %>% 
+  dplyr::rename(Expression = Word)
 ```
 
 ```{r describe participant exclusions}
+#Get total number of participants by platform without exclusions
+total_p <- ppt_exclusions %>% count(Platform)
+
 #Get exclusion information 
-exclusion_stats <- ppt_demos %>% 
+exclusion_stats <- ppt_exclusions %>% 
   summarise(Exclude_Incomplete = sum(Incomplete > .67), Exclude_Thirty_Plus = sum(Thirty_plus == TRUE & Incomplete < .67), Exclude_Correlation = sum(Correlation < 0.2 & Thirty_plus == FALSE, na.rm = TRUE), Exclude_Correlation_NA = sum(is.na(Correlation) & Incomplete < .67 & Thirty_plus == FALSE))
 
 #Get total number of exclusions
 total_excludes <- exclusion_stats %>% 
   summarise(Total_Excluded = sum(Exclude_Incomplete, Exclude_Thirty_Plus, Exclude_Correlation, Exclude_Correlation_NA))
 
-#Get total number of participants in dataset
+#Get total number of participants left in dataset
 ppt_totals <-as.data.frame(table(ratings_long$Participant))
+
+#Get total number of exclusions by platform
+platform_excludes <- ppt_exclusions %>% 
+  group_by(Platform) %>% 
+  summarise(Exclude_Incomplete = sum(Incomplete > .67), Exclude_Thirty_Plus = sum(Thirty_plus == TRUE & Incomplete < .67), Exclude_Correlation = sum(Correlation < 0.2 & Thirty_plus == FALSE, na.rm = TRUE), Exclude_Correlation_NA = sum(is.na(Correlation) & Incomplete < .67 & Thirty_plus == FALSE))
+
 ```
 
-# Results
-
-The data were cleaned to screen for invalid responses (e.g., inattentive participants, bot responses) in the online questionnaire. First, we excluded participants who completed less than 33% of the questionnaire, *n* = `r exclusion_stats$Exclude_Incomplete`. We then excluded participants who provided the same rating for 30 expressions in a row, *n* = `r exclusion_stats$Exclude_Thirty_Plus`. Finally, each participants' ratings on the control expressions were were correlated with the existing concreteness ratings for those expressions. Any participant whose correlation was less than r = 0.20 or whose correlation we were unable to calculate due to lack of control word ratings and/or the same rating being provided for every control word were excluded, *n* = `r exclusion_stats$Exclude_Correlation + exclusion_stats$Exclude_Correlation_NA`. A total of `r total_excludes$Total_Excluded` participants were removed via these data cleaning steps, leaving `r nrow(ppt_totals)` participants remaining in our data analysis. Table 1 provides the exclusions by recruitment platform and demographic data of the retained sample. 
-
-```{r get reliability data}
-#Calculate ICC using function from psychometric package based on Brysbaert et al. 2019 
-icc1 <-ICC1.lme(Rating, Expression, data = ratings_long)
-icc2 <-ICC2.lme(Rating, Expression, data = ratings_long)
-```
-
-The raw data and concreteness ratings are available at: https://osf.io/xcezv/. We computed two intraclass correlation coefficients (ICC) based on the word ratings from all participants (Brysbaert et al., 2019; Fletcher, 2015). The first ICC (representing the average correlation of the expression ratings between participants) was `r round(icc1, digits = 2)`. The second ICC (representing the anticipated correlation between the mean ratings of the existing participants and the mean ratings that would be anticipated if we collected an equivalent group of participants) was `r round(icc2, digits = 2)`.
 
 ```{r combine ratings data and create mean}
-#Get concreteness means and standard deviation
-ratings_complete_new <- ratings_long %>% 
-  dplyr::group_by(Expression) %>%
+#Get number of observations not including skipped responses (-99)
+total_observations <- ratings_long %>% 
+  dplyr::filter(Rating > 0) %>% 
+  nrow()
+  
+#Get number of observations that are "I don't know"
+total_unknown <- ratings_long %>% 
+  dplyr::filter(Rating == 6) %>% 
+  nrow()
+
+#Get number of valid observations
+total_valid <- ratings_long %>% 
   dplyr::filter(Rating >= 0 & Rating < 6) %>%
+  nrow()
+  
+#Get concreteness means and standard deviation 
+meanratings <- ratings_long %>% 
+  dplyr::filter(Rating > 0 & Rating < 6) %>%
+  dplyr::group_by(Expression) %>%
   dplyr::summarize(Mean_C = mean(Rating), SD_C = sd(Rating), N = length(Rating[!is.na(Rating)]), Min = min(Rating), Max = max(Rating))
 
 #Get unknown count
-ratings_unknown_new <- ratings_long %>% 
-  dplyr::group_by(Expression) %>% 
+unknown <- ratings_long %>% 
   dplyr::filter(Rating > 0) %>%
+  dplyr::group_by(Expression) %>% 
   dplyr::summarize(Unknown = length(Rating[Rating == 6]))
 
 #Combine means and unknown count
-mean_ratings <- left_join(ratings_unknown_new, ratings_complete_new, by = "Expression")
+master_ratings <- left_join(unknown, meanratings, by = "Expression")
 
-mean_ratings_complete <- mean_ratings %>% 
+#Get only ratings considered complete
+master_complete <- master_ratings %>% 
   filter(N >=10)
 
-mean_ratings_unknown <- mean_ratings %>% 
+#Get only ratings considered unknown
+master_unknown <- master_ratings %>% 
   filter(N < 10 & Unknown >= 8)
 
-mean_ratings_incomplete <- mean_ratings %>% 
-  filter(N < 10 & Unknown < 8)
+#Compare expression code dataframe with expression rating dataframe
+expressions_rated <- master_ratings %>% 
+  dplyr::select(Expression)
+expressions_coded <- expression_coding %>% 
+  dplyr::select(Expression)
 
-#Combine expression categories with ratings
-master <- left_join(expression_coding, mean_ratings, by = "Expression")
+summary(comparedf(expressions_coded, expressions_rated, by = "Expression"))
 
-#Get only complete ratings
-master_complete <- master %>% 
-  filter(N >=10)
+#Calculate mean number of observations
+mean(master_ratings$N, na.rm = TRUE)
+max(master_ratings$N, na.rm = TRUE)
+```
+
+```{r get reliability data}
+#Calculate ICC based on function from psychometric package but customized optimizer (see Brysbaert et al. 2019 for method description) 
+library(nlme)
+library(multilevel)
+
+#Run multilevel model with optimizer set to optim
+attach(ratings_icc)
+mod <- lme(Rating ~ 1, random = ~1 | Expression, na.action = na.omit, control = lmeControl(opt = "optim"))
+detach(ratings_icc)
+#Extract intercept variance
+t0 <- as.numeric(VarCorr(mod)[1,1])
+#Extract residual variance
+sig2 <- as.numeric(VarCorr(mod)[2,1])
+#Calculate ICC based on intercept and residual variance
+icc1 <- t0/(t0 + sig2)
+#Calculate mean ICC across all group ICCs
+icc2 <- mean(GmeanRel(mod)$MeanRel)
+
+#Compare items to Brysbaert norms
+validity <- inner_join(master_complete, brysbaert_concreteness, by = "Expression")
+conc_corr <- cor(validity$Mean_C, validity$Conc.M)
 ```
 
 ```{r descriptive statistics}
 #Calculate descriptive stats on mean ratings
 descriptives <- master_complete %>% 
-  summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), min = min(Mean_C), max = max(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
+  summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
 
+```
+
+```{r get individual word concreteness, warning=FALSE}
+#Get length in words of longest expression
+NumWords <- max(sapply(gregexpr("\\W+", expression_coding$Expression), length))
+
+#Separate words in columns into single columns
+words <- expression_coding %>% 
+  separate(Expression, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16", "W17", "W18", "W19", "W20", "W21", "W22", "W23", "W24", "W25", "W26", "W27", "W28"), extra = "drop", remove = FALSE)
+
+#Change to long format
+library(reshape2)
+words_long <- reshape2::melt(words, id.vars = c("Expression", "Code"))
+
+#Rename column in concreteness ratings
+conc <- brysbaert_concreteness %>% 
+  dplyr::select(Expression, Conc.M) %>% 
+  dplyr::rename(value = Expression)
+
+#Join existing concreteness ratings with long data
+words_long <- left_join(words_long, conc, by = "value")
+
+#Calculate mean, max and min concreteness for each expression
+expression_bconc <- words_long %>% 
+  dplyr::group_by(Expression) %>% 
+  dplyr::summarize(Mean_BConc = mean(Conc.M, na.rm = TRUE), Min_BConc = min(Conc.M, na.rm = TRUE), Max_BConc = max(Conc.M, na.rm = TRUE)) %>% 
+  dplyr::mutate_if(is.numeric, funs(ifelse(is.nan(.), NA, .))) %>% 
+  dplyr::mutate_if(is.numeric, funs(ifelse(is.infinite(.), NA, .)))
+
+#Combine with expression coding
+expression_coding <- left_join(expression_coding, expression_bconc, by = "Expression")
+
+#Combine with new expression concreteness ratings
+expressions_master <- left_join(expression_coding, master_ratings, by = "Expression")
+expressions_analysis <- expressions_master %>% 
+  filter(N >= 10)
 ```
 
 ```{r plot rating distribution}
+#Create labels for subplots
+Code.labs <- c("Idiom", "Noun noun", "Participle verb", "All Expressions")
+names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb", "(all)")
+
 #Create histogram of all items
-p1 <- ggplot(expression_analysis, aes(x = Mean)) + geom_histogram(bins = 20, fill = "#808080", color = "#e9ecef") + theme_apa() + labs(x = "Concreteness Rating", y = "Count") + scale_y_continuous(expand = c(0,0))
+ggplot(expressions_analysis, aes(x = Mean_C)) + geom_histogram(aes(y = ..density..), bins = 25, colour = 1, fill = "grey") + geom_density(lwd = 0.5, colour = 4, fill = 4, alpha = 0.25) + theme_apa() + labs(x = "Mean Concreteness") + facet_grid(. ~ Code, margins = TRUE, labeller = labeller(Code = Code.labs))
 
-expression_type_plot <- expression_analysis %>% 
-  select(Expression, Code, Mean) %>% 
-  drop_na()
-
-p2 <- ggplot(expression_type_plot, aes(x = Mean, group = Code, fill = Code)) + geom_density(alpha = 0.5) + theme_apa() + xlab("Concreteness Rating") + ylab("Density") + labs(fill = "Expression Type") + theme(legend.position = c(0.85, 0.85)) + coord_cartesian(xlim = c(1,5), ylim = c(0, 0.75), expand = FALSE)
+#Save file
+ggsave(filename = file.path(figures_out, "Figure1.png"), width = 8, height = 4)
 ```
 
+```{r test differences between expression types}
+#Run linear model to report on contrasts for idiom vs noun noun and participle verb vs noun noun
+type_model <- lm(Mean_C ~ Code, data = expressions_analysis)
+summary(type_model)
+
+#Export APA format table
+apa.reg.table(type_model, filename = file.path(path_out, "Table1.doc"))
+```
+
+```{r compare to concreteness of individual words in the expressions}
+#Check overall correlations
+cor(expressions_analysis$Mean_C, expressions_analysis$Mean_BConc, use = "complete.obs")
+cor(expressions_analysis$Mean_C, expressions_analysis$Max_BConc, use = "complete.obs")
+cor(expressions_analysis$Mean_C, expressions_analysis$Min_BConc, use = "complete.obs")
+
+#Check correlations by group
+expressions_analysis %>% 
+  dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
+  drop_na() %>% 
+  dplyr::group_by(Code) %>% 
+  dplyr::summarize(Corr_mean = cor(Mean_C, Mean_BConc), Corr_max = cor(Mean_C, Max_BConc), Corr_min = cor(Mean_C, Min_BConc))
+
+```
+
+```{r plot relationships}
+#Get data frame for plot and change to long format
+conc_compare_plot <- expressions_analysis %>% 
+  dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
+  drop_na() %>% 
+  pivot_longer(cols = c("Mean_BConc", "Max_BConc", "Min_BConc"), names_to = "Ind_Words", values_to = "Mean_Conc_Words")
+
+#Create labels for subplots
+Ind_Words.labs <- c("Maximum Concreteness", "Mean Concreteness", "Minimum Concreteness")
+names(Ind_Words.labs) <- c("Max_BConc", "Mean_BConc", "Min_BConc")
+
+#Plot relationships
+ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Code, labeller = labeller(Ind_Words = Ind_Words.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Words") + theme(text = element_text(size = 20))
+
+#Save file
+ggsave(filename = file.path(figures_out, "Figure2.png"), width = 12, height = 12)
+```
