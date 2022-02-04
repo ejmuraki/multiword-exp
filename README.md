@@ -1,2 +1,2 @@
 # multiword-exp
-"This is a line from RStudio"
+A large-scale ratings study for multiword expressions
