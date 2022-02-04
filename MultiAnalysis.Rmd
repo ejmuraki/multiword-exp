@@ -106,6 +106,10 @@ summary(comparedf(expressions_coded, expressions_rated, by = "Expression"))
 #Calculate mean number of observations
 mean(master_ratings$N, na.rm = TRUE)
 max(master_ratings$N, na.rm = TRUE)
+
+#Save files to output
+write_excel_csv(master_ratings, file = file.path(path_out, "Expression_Concreteness_Ratings.csv"))
+write_excel_csv(master_complete, file = file.path(path_out, "Expression_Concreteness_Ratings_Complete.csv"))
 ```
 
 ```{r get reliability data}
