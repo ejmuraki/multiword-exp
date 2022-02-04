@@ -208,6 +208,13 @@ expressions_analysis %>%
   dplyr::group_by(Code) %>% 
   dplyr::summarize(Corr_mean = cor(Mean_C, Mean_BConc), Corr_max = cor(Mean_C, Max_BConc), Corr_min = cor(Mean_C, Min_BConc))
 
+#Get count by group
+expressions_analysis %>% 
+  dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
+  drop_na() %>% 
+  dplyr::group_by(Code) %>%
+  count()
+
 ```
 
 ```{r plot relationships}
