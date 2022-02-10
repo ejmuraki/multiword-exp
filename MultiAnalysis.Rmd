@@ -7,6 +7,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(moments)
+library(reshape2)#for data manipulation
+library(nlme)#for ICC
+library(multilevel)#for ICC
 library(arsenal)#for dataframe comparisons
 library(jtools)#for theme_apa function for plots
 library(apaTables)#for APA format tables
@@ -16,21 +19,30 @@ library(apaTables)#for APA format tables
 #Create paths
 path_in = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Input"
 
-path_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Output"
-
 figures_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Figures"
 
-#define date
-date = "2022.02.03"
 ```
 
 ```{r read data}
-ratings_long <- read_csv(file = file.path(path_in, "Ratings_long_02.03.2022.csv"))
+#Get all ratings in long format
+ratings_all <- read_csv("Ratings_RawData.csv") 
+#Reduce ratings to only included participants
+ratings_include <- ratings_all %>% 
+  filter(Filter == 1)
+#Get participant exclusion data
 ppt_exclusions <- read_csv(file = file.path(path_in, "Ppt_Exclusions.csv"))
+#Get expression coding
 expression_coding <- read_csv(file = file.path(path_in, "Multiword_expression_categories.csv"))
+#Get data for ICC analysis
 ratings_icc <- read_csv(file = file.path(path_in, "Ratings_ICC_02.03.2022.csv"))
+#Get Brysbaert 2014 concreteness ratings
 brysbaert_concreteness <- read_csv(file = file.path(path_in, "Brysbaert_Kuperman_Conc.csv")) %>% 
   dplyr::rename(Expression = Word)
+#Get function words list
+functions <- read_csv(file = file.path(path_in, "Function_words.csv"))
+#Get summarized concreteness ratings for expressions
+master_ratings <- read_csv("MultiwordExpression_Concreteness_Ratings.csv")
+
 ```
 
 ```{r describe participant exclusions}
@@ -46,7 +58,7 @@ total_excludes <- exclusion_stats %>%
   summarise(Total_Excluded = sum(Exclude_Incomplete, Exclude_Thirty_Plus, Exclude_Correlation, Exclude_Correlation_NA))
 
 #Get total number of participants left in dataset
-ppt_totals <-as.data.frame(table(ratings_long$Participant))
+ppt_totals <-as.data.frame(table(ratings_include$Participant))
 
 #Get total number of exclusions by platform
 platform_excludes <- ppt_exclusions %>% 
@@ -56,67 +68,30 @@ platform_excludes <- ppt_exclusions %>%
 ```
 
 
-```{r combine ratings data and create mean}
+```{r get count of observations and ratings}
 #Get number of observations not including skipped responses (-99)
-total_observations <- ratings_long %>% 
+total_observations <- ratings_include %>% 
   dplyr::filter(Rating > 0) %>% 
   nrow()
   
 #Get number of observations that are "I don't know"
-total_unknown <- ratings_long %>% 
+total_unknown <- ratings_include %>% 
   dplyr::filter(Rating == 6) %>% 
   nrow()
 
 #Get number of valid observations
-total_valid <- ratings_long %>% 
+total_valid <- ratings_include %>% 
   dplyr::filter(Rating >= 0 & Rating < 6) %>%
   nrow()
-  
-#Get concreteness means and standard deviation 
-meanratings <- ratings_long %>% 
-  dplyr::filter(Rating > 0 & Rating < 6) %>%
-  dplyr::group_by(Expression) %>%
-  dplyr::summarize(Mean_C = mean(Rating), SD_C = sd(Rating), N = length(Rating[!is.na(Rating)]), Min = min(Rating), Max = max(Rating))
-
-#Get unknown count
-unknown <- ratings_long %>% 
-  dplyr::filter(Rating > 0) %>%
-  dplyr::group_by(Expression) %>% 
-  dplyr::summarize(Unknown = length(Rating[Rating == 6]))
-
-#Combine means and unknown count
-master_ratings <- left_join(unknown, meanratings, by = "Expression")
-
-#Get only ratings considered complete
-master_complete <- master_ratings %>% 
-  filter(N >=10)
-
-#Get only ratings considered unknown
-master_unknown <- master_ratings %>% 
-  filter(N < 10 & Unknown >= 8)
-
-#Compare expression code dataframe with expression rating dataframe
-expressions_rated <- master_ratings %>% 
-  dplyr::select(Expression)
-expressions_coded <- expression_coding %>% 
-  dplyr::select(Expression)
-
-summary(comparedf(expressions_coded, expressions_rated, by = "Expression"))
 
 #Calculate mean number of observations
-mean(master_ratings$N, na.rm = TRUE)
-max(master_ratings$N, na.rm = TRUE)
+mean(master_ratings$N_Rate, na.rm = TRUE)
+max(master_ratings$N_Rate, na.rm = TRUE)
 
-#Save files to output
-write_excel_csv(master_ratings, file = file.path(path_out, "Expression_Concreteness_Ratings.csv"))
-write_excel_csv(master_complete, file = file.path(path_out, "Expression_Concreteness_Ratings_Complete.csv"))
 ```
 
-```{r get reliability data}
+```{r check reliability}
 #Calculate ICC based on function from psychometric package but customized optimizer (see Brysbaert et al. 2019 for method description) 
-library(nlme)
-library(multilevel)
-
 #Run multilevel model with optimizer set to optim
 attach(ratings_icc)
 mod <- lme(Rating ~ 1, random = ~1 | Expression, na.action = na.omit, control = lmeControl(opt = "optim"))
@@ -131,13 +106,21 @@ icc1 <- t0/(t0 + sig2)
 icc2 <- mean(GmeanRel(mod)$MeanRel)
 
 #Compare items to Brysbaert norms
+master_complete <- master_ratings %>% 
+  filter(N_Rate >= 10)
 validity <- inner_join(master_complete, brysbaert_concreteness, by = "Expression")
 conc_corr <- cor(validity$Mean_C, validity$Conc.M)
 ```
 
-```{r descriptive statistics}
+```{r get descriptive statistics}
 #Calculate descriptive stats on mean ratings
+master_complete <- left_join(master_complete, expression_coding, by = "Expression")
+
 descriptives <- master_complete %>% 
+  summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
+
+group_descriptives <- master_complete %>% 
+  group_by(Code) %>% 
   summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
 
 ```
@@ -151,7 +134,6 @@ words <- expression_coding %>%
   separate(Expression, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16", "W17", "W18", "W19", "W20", "W21", "W22", "W23", "W24", "W25", "W26", "W27", "W28"), extra = "drop", remove = FALSE)
 
 #Change to long format
-library(reshape2)
 words_long <- reshape2::melt(words, id.vars = c("Expression", "Code"))
 
 #Rename column in concreteness ratings
@@ -170,17 +152,48 @@ expression_bconc <- words_long %>%
   dplyr::mutate_if(is.numeric, funs(ifelse(is.infinite(.), NA, .)))
 
 #Combine with expression coding
-expression_coding <- left_join(expression_coding, expression_bconc, by = "Expression")
+expressions_analysis <- left_join(master_complete, expression_bconc, by = "Expression")
 
-#Combine with new expression concreteness ratings
-expressions_master <- left_join(expression_coding, master_ratings, by = "Expression")
-expressions_analysis <- expressions_master %>% 
-  filter(N >= 10)
+#Remove function words from data
+expressions_nofunction <- as.data.frame(removeWords(expression_coding$Expression, functions$Functions))
+
+#Remove spaces left after function words removed
+expressions_nofunction <- as.data.frame(str_squish(expressions_nofunction$`removeWords(expression_coding$Expression, functions$Functions)`))
+
+#Rename column
+expressions_nofunction <- rename(expressions_nofunction, "Expression_noFun" = "str_squish(expressions_nofunction$`removeWords(expression_coding$Expression, functions$Functions)`)")
+
+#Bind columns to original
+expressions_nofunction_all <- bind_cols(expression_coding, expressions_nofunction)
+
+#Get length in words of longest expression
+NumWords <- max(sapply(gregexpr("\\W+", expressions_nofunction_all$Expression_noFun), length))
+
+#Separate words in columns into single columns
+nofun_words <- expressions_nofunction_all %>% 
+  separate(Expression_noFun, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16"), extra = "drop", remove = FALSE)
+
+#Change to long format
+nofun_words_long <- reshape2::melt(nofun_words, id.vars = c("Expression", "Code", "Expression_noFun"))
+
+#Join existing concreteness ratings with long data
+nofun_words_long <- left_join(nofun_words_long, conc, by = "value")
+
+#Calculate mean, max and min concreteness for each expression less function words
+expression_bconc_nofun <- nofun_words_long %>% 
+  dplyr::group_by(Expression) %>% 
+  dplyr::summarize(Mean_BConc_F = mean(Conc.M, na.rm = TRUE), Min_BConc_F = min(Conc.M, na.rm = TRUE), Max_BConc_F = max(Conc.M, na.rm = TRUE)) %>% 
+  dplyr::mutate_if(is.numeric, funs(ifelse(is.nan(.), NA, .))) %>% 
+  dplyr::mutate_if(is.numeric, funs(ifelse(is.infinite(.), NA, .)))
+
+#Combine with expression coding
+expressions_analysis_nofun <- left_join(master_complete, expression_bconc_nofun, by = "Expression")
+
 ```
 
 ```{r plot rating distribution}
 #Create labels for subplots
-Code.labs <- c("Idiom", "Noun noun", "Participle verb", "All Expressions")
+Code.labs <- c("Idiom/Fixed Expression", "Noun noun", "Participle verb", "All Expressions")
 names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb", "(all)")
 
 #Create histogram of all items
@@ -190,14 +203,6 @@ ggplot(expressions_analysis, aes(x = Mean_C)) + geom_histogram(aes(y = ..density
 ggsave(filename = file.path(figures_out, "Figure1.png"), width = 8, height = 4)
 ```
 
-```{r test differences between expression types}
-#Run linear model to report on contrasts for idiom vs noun noun and participle verb vs noun noun
-type_model <- lm(Mean_C ~ Code, data = expressions_analysis)
-summary(type_model)
-
-#Export APA format table
-apa.reg.table(type_model, filename = file.path(path_out, "Table1.doc"))
-```
 
 ```{r compare to concreteness of individual words in the expressions}
 #Check overall correlations
@@ -221,7 +226,7 @@ expressions_analysis %>%
 
 ```
 
-```{r plot relationships}
+```{r plot relationships of individual words and full expression}
 #Get data frame for plot and change to long format
 conc_compare_plot <- expressions_analysis %>% 
   dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
@@ -232,9 +237,56 @@ conc_compare_plot <- expressions_analysis %>%
 Ind_Words.labs <- c("Maximum Concreteness", "Mean Concreteness", "Minimum Concreteness")
 names(Ind_Words.labs) <- c("Max_BConc", "Mean_BConc", "Min_BConc")
 
+Code.labs <- c("Idiom/Fixed Expression", "Noun noun", "Participle verb")
+names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb")
+
 #Plot relationships
-ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Code, labeller = labeller(Ind_Words = Ind_Words.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Words") + theme(text = element_text(size = 20))
+ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Code, labeller = labeller(Ind_Words = Ind_Words.labs, Code = Code.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Words") + theme(text = element_text(size = 20))
 
 #Save file
 ggsave(filename = file.path(figures_out, "Figure2.png"), width = 12, height = 12)
 ```
+
+```{r compare to concreteness of content words in the expressions}
+#Check overall correlations
+cor(expressions_analysis_nofun$Mean_C, expressions_analysis_nofun$Mean_BConc_F, use = "complete.obs")
+cor(expressions_analysis_nofun$Mean_C, expressions_analysis_nofun$Max_BConc_F, use = "complete.obs")
+cor(expressions_analysis_nofun$Mean_C, expressions_analysis_nofun$Min_BConc_F, use = "complete.obs")
+
+#Check correlations by group
+expressions_analysis_nofun %>% 
+  dplyr::select(Expression, Code, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
+  drop_na() %>% 
+  dplyr::group_by(Code) %>% 
+  dplyr::summarize(Corr_mean = cor(Mean_C, Mean_BConc_F), Corr_max = cor(Mean_C, Max_BConc_F), Corr_min = cor(Mean_C, Min_BConc_F))
+
+#Get count by group
+expressions_analysis_nofun %>% 
+  dplyr::select(Expression, Code, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
+  drop_na() %>% 
+  dplyr::group_by(Code) %>%
+  count()
+
+```
+
+```{r plot relationships of content words and full expression}
+#Get data frame for plot and change to long format
+conc_compare_plot_nof <- expressions_analysis_nofun %>% 
+  dplyr::select(Expression, Code, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
+  drop_na() %>% 
+  pivot_longer(cols = c("Mean_BConc_F", "Max_BConc_F", "Min_BConc_F"), names_to = "Ind_Words", values_to = "Mean_Conc_Words")
+
+#Create labels for subplots
+Ind_Words.labs <- c("Maximum Concreteness", "Mean Concreteness", "Minimum Concreteness")
+names(Ind_Words.labs) <- c("Max_BConc_F", "Mean_BConc_F", "Min_BConc_F")
+
+Code.labs <- c("Idiom/Fixed Expression", "Noun noun", "Participle verb")
+names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb")
+
+#Plot relationships
+ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Code, labeller = labeller(Ind_Words = Ind_Words.labs, Code = Code.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Content Words") + theme(text = element_text(size = 20))
+
+#Save file
+ggsave(filename = file.path(figures_out, "Figure3.png"), width = 12, height = 12)
+```
+
