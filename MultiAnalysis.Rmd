@@ -7,6 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(moments)
+library(tm)#Function to remove strings
 library(reshape2)#for data manipulation
 library(nlme)#for ICC
 library(multilevel)#for ICC
@@ -22,6 +23,7 @@ path_in = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Pr
 figures_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Figures"
 
 ```
+
 
 ```{r read data}
 #Get all ratings in long format
@@ -65,8 +67,16 @@ platform_excludes <- ppt_exclusions %>%
   group_by(Platform) %>% 
   summarise(Exclude_Incomplete = sum(Incomplete > .67), Exclude_Thirty_Plus = sum(Thirty_plus == TRUE & Incomplete < .67), Exclude_Correlation = sum(Correlation < 0.2 & Thirty_plus == FALSE, na.rm = TRUE), Exclude_Correlation_NA = sum(is.na(Correlation) & Incomplete < .67 & Thirty_plus == FALSE))
 
-```
+#Get only participants with correlation calculated
+ppt_correlations <- ppt_exclusions %>%
+  dplyr::filter(Incomplete < .67 & Thirty_plus == FALSE) %>% 
+  dplyr::select(Participant, Platform, Correlation) %>% 
+  drop_na()
 
+#Create histogram of correlations
+ggplot(ppt_correlations, aes(x = Correlation)) + geom_histogram(aes(y = ..density..), bins = 50, colour = 1, fill = "grey") + geom_density(lwd = 0.5, colour = 4, fill = 4, alpha = 0.25) + geom_vline(xintercept = 0.2, color = "red", size = 1.25) + theme_apa() + labs(x = "Mean Participant Correlation to Control Items (n = 2,598)") 
+
+```
 
 ```{r get count of observations and ratings}
 #Get number of observations not including skipped responses (-99)
@@ -120,21 +130,32 @@ descriptives <- master_complete %>%
   summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
 
 group_descriptives <- master_complete %>% 
-  group_by(Code) %>% 
-  summarize(mean = mean(Mean_C), median = median(Mean_C), sd = sd(Mean_C), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
+  group_by(Type) %>% 
+  summarize(mean = round(mean(Mean_C), digits = 2), median = round(median(Mean_C), digits = 2), sd = round(sd(Mean_C), digits = 2), skew = skewness(Mean_C), kurtosis = kurtosis(Mean_C))
 
+type_count <- master_complete %>% 
+  count(Type)
 ```
 
 ```{r get individual word concreteness, warning=FALSE}
+#Create column with no hyphens 
+exp_nohyphen <- as.data.frame(gsub("-", " ", expression_coding$Expression))
+
+#Add no hyphen columns to data
+exp_data <- bind_cols(expression_coding, exp_nohyphen)
+
+exp_data <- exp_data %>% 
+  rename("Expression_nohyphen" = "gsub(\"-\", \" \", expression_coding$Expression)")
+
 #Get length in words of longest expression
-NumWords <- max(sapply(gregexpr("\\W+", expression_coding$Expression), length))
+NumWords <- max(sapply(gregexpr("\\W+", exp_data$Expression_nohyphen), length))
 
 #Separate words in columns into single columns
-words <- expression_coding %>% 
-  separate(Expression, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16", "W17", "W18", "W19", "W20", "W21", "W22", "W23", "W24", "W25", "W26", "W27", "W28"), extra = "drop", remove = FALSE)
+words <- exp_data %>% 
+  separate(Expression_nohyphen, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16", "W17", "W18", "W19", "W20", "W21", "W22", "W23", "W24", "W25", "W26", "W27", "W28"), extra = "drop", remove = FALSE)
 
 #Change to long format
-words_long <- reshape2::melt(words, id.vars = c("Expression", "Code"))
+words_long <- reshape2::melt(words, id.vars = c("Expression", "Type", "Expression_nohyphen"))
 
 #Rename column in concreteness ratings
 conc <- brysbaert_concreteness %>% 
@@ -155,26 +176,23 @@ expression_bconc <- words_long %>%
 expressions_analysis <- left_join(master_complete, expression_bconc, by = "Expression")
 
 #Remove function words from data
-expressions_nofunction <- as.data.frame(removeWords(expression_coding$Expression, functions$Functions))
-
-#Remove spaces left after function words removed
-expressions_nofunction <- as.data.frame(str_squish(expressions_nofunction$`removeWords(expression_coding$Expression, functions$Functions)`))
+expressions_nofunction <- as.data.frame(removeWords(exp_data$Expression_nohyphen, functions$Functions))
 
 #Rename column
-expressions_nofunction <- rename(expressions_nofunction, "Expression_noFun" = "str_squish(expressions_nofunction$`removeWords(expression_coding$Expression, functions$Functions)`)")
+expressions_nofunction <- rename(expressions_nofunction, "Expression_noFun" = "removeWords(exp_data$Expression_nohyphen, functions$Functions)")
 
 #Bind columns to original
-expressions_nofunction_all <- bind_cols(expression_coding, expressions_nofunction)
+expressions_nofunction_all <- bind_cols(exp_data, expressions_nofunction)
 
 #Get length in words of longest expression
 NumWords <- max(sapply(gregexpr("\\W+", expressions_nofunction_all$Expression_noFun), length))
 
 #Separate words in columns into single columns
 nofun_words <- expressions_nofunction_all %>% 
-  separate(Expression_noFun, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16"), extra = "drop", remove = FALSE)
+  separate(Expression_noFun, c("W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16", "W17"), extra = "drop", remove = FALSE)
 
 #Change to long format
-nofun_words_long <- reshape2::melt(nofun_words, id.vars = c("Expression", "Code", "Expression_noFun"))
+nofun_words_long <- reshape2::melt(nofun_words, id.vars = c("Expression", "Type", "Expression_nohyphen", "Expression_noFun"))
 
 #Join existing concreteness ratings with long data
 nofun_words_long <- left_join(nofun_words_long, conc, by = "value")
@@ -193,14 +211,14 @@ expressions_analysis_nofun <- left_join(master_complete, expression_bconc_nofun,
 
 ```{r plot rating distribution}
 #Create labels for subplots
-Code.labs <- c("Idiom/Fixed Expression", "Noun noun", "Participle verb", "All Expressions")
-names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb", "(all)")
+Type.labs <- c("Idiom/Fixed expression", "Compound noun", "Particle verb", "All Expressions")
+names(Type.labs) <- c("Idiom/Fixed expression", "Compound noun", "Particle verb", "(all)")
 
 #Create histogram of all items
-ggplot(expressions_analysis, aes(x = Mean_C)) + geom_histogram(aes(y = ..density..), bins = 25, colour = 1, fill = "grey") + geom_density(lwd = 0.5, colour = 4, fill = 4, alpha = 0.25) + theme_apa() + labs(x = "Mean Concreteness") + facet_grid(. ~ Code, margins = TRUE, labeller = labeller(Code = Code.labs))
+ggplot(expressions_analysis, aes(x = Mean_C)) + geom_histogram(aes(y = ..density..), bins = 25, colour = 1, fill = "grey") + geom_density(lwd = 0.5, colour = 4, fill = 4, alpha = 0.25) + theme_apa() + labs(x = "Mean Concreteness") + facet_grid(. ~ Type, margins = TRUE, labeller = labeller(Type = Type.labs))
 
 #Save file
-ggsave(filename = file.path(figures_out, "Figure1.png"), width = 8, height = 4)
+ggsave(filename = file.path(figures_out, "Figure1_02.25.2022.png"), width = 8, height = 4)
 ```
 
 
@@ -212,16 +230,16 @@ cor(expressions_analysis$Mean_C, expressions_analysis$Min_BConc, use = "complete
 
 #Check correlations by group
 expressions_analysis %>% 
-  dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
+  dplyr::select(Expression, Type, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
   drop_na() %>% 
-  dplyr::group_by(Code) %>% 
-  dplyr::summarize(Corr_mean = cor(Mean_C, Mean_BConc), Corr_max = cor(Mean_C, Max_BConc), Corr_min = cor(Mean_C, Min_BConc))
+  dplyr::group_by(Type) %>% 
+  dplyr::summarize(Corr_mean = round(cor(Mean_C, Mean_BConc), digits = 2), Corr_max = round(cor(Mean_C, Max_BConc), digits = 2), Corr_min = round(cor(Mean_C, Min_BConc), digits = 2))
 
 #Get count by group
 expressions_analysis %>% 
-  dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
+  dplyr::select(Expression, Type, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
   drop_na() %>% 
-  dplyr::group_by(Code) %>%
+  dplyr::group_by(Type) %>%
   count()
 
 ```
@@ -229,7 +247,7 @@ expressions_analysis %>%
 ```{r plot relationships of individual words and full expression}
 #Get data frame for plot and change to long format
 conc_compare_plot <- expressions_analysis %>% 
-  dplyr::select(Expression, Code, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
+  dplyr::select(Expression, Type, Mean_BConc, Max_BConc, Min_BConc, Mean_C) %>% 
   drop_na() %>% 
   pivot_longer(cols = c("Mean_BConc", "Max_BConc", "Min_BConc"), names_to = "Ind_Words", values_to = "Mean_Conc_Words")
 
@@ -237,14 +255,14 @@ conc_compare_plot <- expressions_analysis %>%
 Ind_Words.labs <- c("Maximum Concreteness", "Mean Concreteness", "Minimum Concreteness")
 names(Ind_Words.labs) <- c("Max_BConc", "Mean_BConc", "Min_BConc")
 
-Code.labs <- c("Idiom/Fixed Expression", "Noun noun", "Participle verb")
-names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb")
+Type.labs <- c("Idiom/Fixed expression", "Compound noun", "Particle verb")
+names(Type.labs) <- c("Idiom/Fixed expression", "Compound noun", "Particle verb")
 
 #Plot relationships
-ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Code, labeller = labeller(Ind_Words = Ind_Words.labs, Code = Code.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Words") + theme(text = element_text(size = 20))
+ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Type, labeller = labeller(Ind_Words = Ind_Words.labs, Type = Type.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Words") + theme(text = element_text(size = 20))
 
 #Save file
-ggsave(filename = file.path(figures_out, "Figure2.png"), width = 12, height = 12)
+ggsave(filename = file.path(figures_out, "Figure2_02.25.2022.png"), width = 12, height = 12)
 ```
 
 ```{r compare to concreteness of content words in the expressions}
@@ -255,16 +273,16 @@ cor(expressions_analysis_nofun$Mean_C, expressions_analysis_nofun$Min_BConc_F, u
 
 #Check correlations by group
 expressions_analysis_nofun %>% 
-  dplyr::select(Expression, Code, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
+  dplyr::select(Expression, Type, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
   drop_na() %>% 
-  dplyr::group_by(Code) %>% 
-  dplyr::summarize(Corr_mean = cor(Mean_C, Mean_BConc_F), Corr_max = cor(Mean_C, Max_BConc_F), Corr_min = cor(Mean_C, Min_BConc_F))
+  dplyr::group_by(Type) %>% 
+  dplyr::summarize(Corr_mean = round(cor(Mean_C, Mean_BConc_F), digits = 2), Corr_max = round(cor(Mean_C, Max_BConc_F), digits = 2), Corr_min = round(cor(Mean_C, Min_BConc_F), digits = 2))
 
 #Get count by group
 expressions_analysis_nofun %>% 
-  dplyr::select(Expression, Code, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
+  dplyr::select(Expression, Type, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
   drop_na() %>% 
-  dplyr::group_by(Code) %>%
+  dplyr::group_by(Type) %>%
   count()
 
 ```
@@ -272,7 +290,7 @@ expressions_analysis_nofun %>%
 ```{r plot relationships of content words and full expression}
 #Get data frame for plot and change to long format
 conc_compare_plot_nof <- expressions_analysis_nofun %>% 
-  dplyr::select(Expression, Code, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
+  dplyr::select(Expression, Type, Mean_BConc_F, Max_BConc_F, Min_BConc_F, Mean_C) %>% 
   drop_na() %>% 
   pivot_longer(cols = c("Mean_BConc_F", "Max_BConc_F", "Min_BConc_F"), names_to = "Ind_Words", values_to = "Mean_Conc_Words")
 
@@ -280,13 +298,13 @@ conc_compare_plot_nof <- expressions_analysis_nofun %>%
 Ind_Words.labs <- c("Maximum Concreteness", "Mean Concreteness", "Minimum Concreteness")
 names(Ind_Words.labs) <- c("Max_BConc_F", "Mean_BConc_F", "Min_BConc_F")
 
-Code.labs <- c("Idiom/Fixed Expression", "Noun noun", "Participle verb")
-names(Code.labs) <- c("Idiom", "Noun-noun", "Participle verb")
+Type.labs <- c("Idiom/Fixed expression", "Compound noun", "Particle verb")
+names(Type.labs) <- c("Idiom/Fixed expression", "Compound noun", "Particle verb")
 
 #Plot relationships
-ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Code, labeller = labeller(Ind_Words = Ind_Words.labs, Code = Code.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Content Words") + theme(text = element_text(size = 20))
+ggplot(conc_compare_plot_nof, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Type, labeller = labeller(Ind_Words = Ind_Words.labs, Type = Type.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Content Words") + theme(text = element_text(size = 20))
 
 #Save file
-ggsave(filename = file.path(figures_out, "Figure3.png"), width = 12, height = 12)
+ggsave(filename = file.path(figures_out, "Figure3_02.25.2022.png"), width = 12, height = 12)
 ```
 
