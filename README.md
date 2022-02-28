@@ -1,2 +1,6 @@
 # multiword-exp
-A large-scale ratings study for multiword expressions
+The concreteness ratings are available in two main files; Ratings_RawData.csv and MultiwordExpression_Concreteness_Ratings.csv. The first file contains all raw data collected, including those of participants that had to be dropped (indicated by the column Filter = 0), and answers indicating that the participant did not know the expression (ratings of 6). This file may be of interest to colleagues investigating online data gathering and response patterns across participants. 
+
+The second file is a summary file, containing processed information for the 66,432 English multiword expressions we presented. Expressions not known to the participants only include information about the number of selected participants who responded to the expression and the number of participants indicating they did not know the expression. This is the only information we think valid for these expressions. They may be of interest to colleagues wanting to teach unfamiliar expressions.
+
+Expressions familiar to the participants include additional information about the mean rating, the standard deviation of the ratings, and the number of responses going from 1 (very abstract) to 5 (very concrete). This provides users with all information they need to select stimuli for various types of research.
