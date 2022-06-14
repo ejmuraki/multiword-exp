@@ -1,0 +1,121 @@
+Expression,Idiomaticity,Meaningfulness,PhraseFreq,BigramFreq1,BigramFreq2,UnigramFreq1,UnigramFreq2,UnigramFreq3,Definition 
+a living hell ,6.5,6.8,2.6,10,2.8,19.8,13.1,11.6,a situation that is extremely unpleasant for someone 
+play the field ,6.4,6.5,1.6,9.6,10,13.9,20.8,12,indulge in a series of relationships without committing oneself to anyone. 
+get the picture ,6.3,6.9,3.5,12.7,9.3,16.7,20.8,11.6,understand a situation 
+take the cake ,6.2,6.4,1,11.8,5.7,15.1,20.8,9,surpass or exceed all others. 
+off the charts ,5.9,6.6,3.3,12.2,5.8,14.9,20.8,7.7,much better/more than usual 
+over the hill ,5.7,6.5,5.4,13.4,8.8,15.5,20.8,10.9,too old 
+on the market ,5.7,6.3,7.6,16.1,10.7,18,20.8,12.8,openly available for sale 
+against the clock ,5.7,6.4,2.6,11.5,8.4,13.7,20.8,9.7,in a great hurry 
+on the rocks ,5.6,6.8,4.8,16.1,6.6,18,20.8,9.1,alcoholic drink with ice cube; in the state of bankruptcy 
+in the groove ,5.4,6.3,4,17.3,5,19.3,20.8,7.2,attuned to do something 
+off the map ,5.4,6.7,3,12.2,7.5,14.9,20.8,10.2,"removed from civilization, or to delineate a subject considered out of date, out of fashion, or consigned to oblivion. "
+at all costs ,5.2,6.8,5.3,13.3,5.9,17.4,17.2,11.9,no matter what 
+go to pieces ,5.2,4,1.6,14.2,6.2,16.4,19.9,10.8,to have a mental collapse 
+on the loose ,5.1,5.5,3.9,16.1,5.4,18,20.8,9.5,"at large, free, acting without restraint "
+on the go ,4.9,6.6,5.6,16.1,7.9,18,20.8,16.4,very busy or active 
+out of character ,4.8,6.4,5.7,14.4,7,16.8,19.8,11.5,not acting like their self 
+have a fit ,4.8,6.7,3.5,15.4,6.4,18.2,19.8,11.1,to be very angry; to show great anger. 
+of two minds ,4.6,4.4,3.3,10.5,3.5,19.8,15.8,9.7,holding conflicting opinions about someone or something; being undecided about someone or something 
+up the creek ,4.5,6.1,2.6,12.3,5.5,16.6,20.8,8.6,in an awkward position with no easy way out 
+on my mind ,4.5,6.6,6.5,12.2,10.4,18,17.5,12.9,occupying one's thoughts; currently being thought about 
+on the road ,4.3,6.6,8.8,16.1,10.9,18,20.8,11.9,"traveling from place to place, not necessarily on the highways; working away from one's home or office"
+good to go ,4.2,6.9,6.1,10.8,14.6,16.2,19.9,16.4,all ready to go; all checked and pronounced ready to go 
+get the word ,4.1,4.6,4.6,12.7,11.2,16.7,20.8,12.9,to receive an explanation; to receive the final and authoritative explanation 
+out of practice ,4,6.6,2.3,14.4,6.1,16.8,19.8,11.3,"no longer used to doing something, no longer adept for lack of doing something "
+have it coming ,3.9,4.3,2,11.6,6.5,18.2,19,13.2,to deserve something 
+in the wind ,3.6,6.1,5.8,17.3,9,19.3,20.8,10.7,about to happen 
+go for it ,3.5,6.8,7.8,10.6,12.5,16.4,18.3,19,to do what you need to without additional thought 
+for the birds ,3.5,5.3,3.8,15.5,7.7,18.3,20.8,10.2,"worthless, undesirable "
+here and there ,3.4,6.4,9.1,12.2,12.3,15.8,20.2,17,in different places 
+just the ticket ,3.3,4.7,1,12.2,7.7,17.8,20.8,10.4,to be just the perfect thing 
+over a barrel ,3.3,4.3,2,10.9,5.7,15.5,19.8,8.2,out of one's control; in a dilemma. 
+out of proportion ,3.3,6.4,6.3,14.4,6.4,16.8,19.8,9.7,of exaggerated importance; of an unrealistic importance or size compared to something else. 
+to this end ,3.1,4.1,5.3,11.8,6.7,19.9,17.4,13.9,when everything else has been taken into consideration 
+all the way ,3.1,6.9,10.4,14.7,13.7,17.2,20.8,15.6,with everything on it (e.g. on a hamburger) 
+at a stretch ,3,3.8,3.5,13.2,6.7,17.4,19.8,9.6,continuously; without stopping 
+out of circulation ,2.7,6.1,3.2,14.4,3.8,16.8,19.8,8.2,not interacting socially with other people 
+answer the call ,2.3,6.8,2,8.4,9.5,12.2,20.8,14.1,to die 
+and then some ,2.2,5.2,7.7,15.5,8.1,20.2,16.5,16.4,and even more 
+as it were ,2.2,4.2,7.4,11.9,9.7,17.5,19,16.7,not meaning exactly what it appears to mean or unusual expression 
+for a song ,1.7,4.2,3.2,14.8,8.1,18.3,19.8,10.9,very cheaply 
+off the path ,4.4,5.8,3.2,12.2,8,14.9,20.8,9.9,
+all the hype ,4.1,5.7,4.4,14.7,6.8,17.2,20.8,8.5,
+to the edge ,4,5.4,5.4,16.2,9.1,19.9,20.8,10.4,
+into the unknown ,3.9,5.9,1.6,13.5,6.2,15.6,20.8,9.9,
+see the picture ,3.9,6.9,3.2,12.3,9.3,16.1,20.8,11.6,
+be a burden ,3.5,6.1,3.5,14.1,6.3,17.7,19.8,9.6,
+take a stroll ,3.5,6.6,3,12,5.6,15.1,19.8,7.7,
+such a burden ,2.9,6,1,12.5,6.3,14.5,19.8,9.6,
+nothing to wear ,2.6,5.9,1.6,10.6,9.5,13.6,19.9,11.4,
+had a dream ,2.6,5.8,5.6,14.1,8.2,16.7,19.8,10.5,
+good to know ,2.5,6.7,7.3,10.8,12.4,16.2,19.9,19,
+at the moment ,2.4,6.5,9.4,15.2,10.3,17.4,20.8,11.7,
+a personal nature ,2.4,5.3,2.8,9.5,3,19.8,12.4,11.5,
+on a diet ,2.1,6.4,6,14,7.2,18,19.8,10.7,
+a bad attitude ,2.1,6.6,3,11.4,3.5,19.8,14.4,10.4,
+have some fun ,2,6.5,5.1,11.8,6.1,18.2,16.4,13.5,
+kind of disturbing ,1.9,6.3,3,15.8,3.7,15.8,19.8,8.9,
+across the highway ,1.8,5.9,2.8,11.7,8.1,12.6,20.8,9.7,
+time to stop ,1.8,6.9,4.9,12.3,11.1,16.4,19.9,12.8,
+that's the agreement ,1.8,6.4,1,13.4,7.8,17.4,20.8,10.9,
+kind of silly ,1.7,5.9,6.1,15.8,6.5,15.8,19.8,10.2,
+this is typical ,1.7,6.6,2.3,14.9,6.2,17.4,18.6,10.4,
+something to say ,1.6,5.9,6.4,11.5,13.4,16,19.9,15.7,
+really don't matter ,1.6,3.1,2,11.8,6.1,17,17.6,13,
+one of these ,1.5,5.8,10.6,14.8,13.2,17.1,19.8,15.6,
+it's a lie ,1.5,6.8,3.2,14.6,7.7,18,19.8,11,
+when I die ,1.5,5.3,3.5,14.5,5.8,16.8,20.2,11.5,
+in the mailbox ,1.5,6.2,4,17.3,5.5,19.3,20.8,6.9,
+have a secret ,1.4,5.9,3.8,15.4,8.2,18.2,19.8,10.9,
+in a dispute ,1.4,6.1,3.6,15.5,5.8,19.3,19.8,8.8,
+take the quiz ,1.4,6.6,2,11.8,5.2,15.1,20.8,8.6,
+I guess not ,1.4,6.4,8,15.5,8.1,20.2,15.6,17.7,
+what you said ,1.4,5.5,8.6,13.1,12.3,17.5,19.7,16.1,
+don't know me ,1.3,3.9,5.2,16,8.3,17.6,19,16.6,
+have to eat ,1.3,5.5,7.4,15.5,11.6,18.2,19.9,13.2,
+sample of data ,1.3,6.8,2,8,8.9,11.3,19.8,13.8,
+get a certificate ,1.2,6.2,2.6,13.3,5.4,16.7,19.8,8,
+not really familiar ,1.2,5,5.3,12.6,5.8,17.7,17,11.3,
+is really nice ,1.2,3.6,6.7,11.6,10.5,18.6,17,14.2,
+don't like them ,1.1,3.8,6.8,12.6,9.5,17.6,18.5,16.3,
+on the bright ,3.5,2.9,4.8,16.1,6.8,18,20.8,9.9,
+in the late ,1.9,2.3,9.2,17.3,10.3,19.3,20.8,12.5,
+in the larger ,1.9,2.3,5.6,17.3,8.9,19.3,20.8,11.2,
+make the monthly ,1.8,2.7,1,11.5,5.6,15.3,20.8,9.1,
+in a desperate ,1.6,2,3.7,15.5,5.9,19.3,19.8,9,
+for all practical ,1.6,2.2,3.6,11.6,3.6,18.3,17.2,9.7,
+by the postal ,1.6,1.8,5.2,14.5,9.1,16.8,20.8,10.4,
+girls and five ,1.6,1.4,2,8.5,8.8,11.9,20.2,14.5,
+there and ride ,1.6,1.3,1.6,13.1,5.9,17,20.2,10.9,
+of a heavy ,1.5,1.8,3.5,15.1,7.8,19.8,19.8,11,
+of the pelvic ,1.5,1.6,4.2,17.5,5,19.8,20.8,6.9,
+in all public ,1.5,1.8,4.8,11.4,6.3,19.3,17.2,13.8,
+is the only ,1.4,2.2,9.5,14.6,13.5,18.6,20.8,15.6,
+all the healthy ,1.4,2.2,2.3,14.7,6.1,17.2,20.8,11.1,
+than the typical ,1.4,1.6,3,12.5,8,15.9,20.8,10.4,
+or a short ,1.4,1.4,3.2,12.4,10.1,17.7,19.8,12.4,
+and then at ,1.4,1.7,7.6,15.5,8.5,20.2,16.5,17.4,
+with the applicable ,1.4,1.9,5.9,15.3,6.9,17.9,20.8,8.9,
+thing and we ,1.3,1,5.7,11.3,13.8,15.7,20.2,17.6,
+because it lets ,1.3,1.8,2.6,12.4,5.4,16.7,19,9.1,
+are you more ,1.3,2,5.6,14.7,8.5,17.6,19.7,16.6,
+using the estimated ,1.3,2.2,2.6,11.7,8.4,13.8,20.8,10.7,
+in a particular ,1.3,2.3,7.1,15.5,10.2,19.3,19.8,12.3,
+without the primary ,1.3,2.6,1.6,10,9.6,13.6,20.8,11.3,
+into a coherent ,1.3,1.8,3.5,12.4,5.7,15.6,19.8,7.3,
+that the existing ,1.3,1.9,3.5,15.1,8,19.4,20.8,10.2,
+know it gets ,1.3,1.5,6.5,13.5,11.3,19,19,13.3,
+there and I'll ,1.3,1,4.2,13.1,10.5,17,20.2,14,
+of mine gave ,1.2,1.1,2.6,11,2.8,19.8,12.6,12.5,
+way of preventing ,1.2,3.4,2,11.3,5.2,15.6,19.8,8.5,
+on a windy ,1.2,2.3,3,14,3.9,18,19.8,7.7,
+at all except ,1.2,1.6,4.9,13.3,5.9,17.4,17.2,12.4,
+are you originally ,1.2,2.2,6.1,14.7,6.5,17.6,19.7,11.4,
+things that we ,1.2,1.5,8.6,12.9,13.5,15.6,19.4,17.6,
+see what it ,1.2,1.8,7.1,11.7,12.5,16.1,17.5,19,
+with a reduced ,1.2,1.9,3.6,14.3,6.2,17.9,19.8,10.9,
+with a continuous ,1.2,2.1,3.3,14.3,7.4,17.9,19.8,9.2,
+if the global ,1.2,1.8,1,12.9,8.3,17.3,20.8,10.6,
+was not an ,1.1,1.3,6.6,12.2,10.2,18.3,17.7,16.7,
+but that certainly ,1.1,1.8,2,12.1,7,18.3,19.4,12.5,

@@ -1,0 +1,131 @@
+Expression,Mean_C,SD_C,N_Rate,N_Unknown,Type,FREQ,SEM_F,MEAN,SEM_M,NDEC,DEC,ABDEC,NRDEC,PRED,LIT,SEM_L
+a piece of cake,3.7,1.418136492,10,0,Idiom/Fixed expression,6.1,0.16,6.7,0.22,96.43,3.57,0,3.57,0.23,6.39,0.34
+add fuel to the fire,3.1,1.595131482,10,0,Idiom/Fixed expression,4.2,0.65,5.75,0.54,50,50,28.57,21.43,0.29,6.32,0.25
+back to square one,1.6,0.966091783,10,0,Idiom/Fixed expression,4.3,0.71,6.43,0.37,17.86,82.14,46.43,35.71,0.93,3.79,0.92
+be a wet blanket,1.5,1.269295518,10,0,Idiom/Fixed expression,3,0.77,5.03,0.84,85.71,14.29,10.71,3.57,0.18,2.89,0.84
+be on cloud nine,1.8,1.316561177,10,0,Idiom/Fixed expression,5.71,0.33,6.93,0.01,88.89,11.11,11.11,0,0.93,1.78,0.35
+beg the question,1.4,0.699205899,10,0,Idiom/Fixed expression,2.3,0.47,3.4,0.76,57.14,42.86,25,17.86,0,2.47,0.65
+behind the times,2.1,1.197219,10,0,Idiom/Fixed expression,4.5,0.59,5.85,0.5,29.63,70.37,7.41,62.96,0,2.82,0.91
+below the belt,2.7,1.251665557,10,0,Idiom/Fixed expression,4.8,0.39,6.6,0.08,75,25,14.29,10.71,0.2,6.22,0.29
+bet your bottom dollar,2,1.414213562,10,0,Idiom/Fixed expression,4.5,0.5,6.43,0.34,74.07,25.93,14.81,11.11,0.83,3.17,0.65
+bite someone's head off,2.4,1.577621275,10,0,Idiom/Fixed expression,5.4,0.62,6.6,0.32,75,25,25,0,0.97,3.44,0.74
+bite the bullet,1.6,1.264911064,10,0,Idiom/Fixed expression,4.5,0.73,5.9,0.45,89.29,10.71,7.14,3.57,0.57,5,0.78
+bite the dust,2.272727273,1.678744119,11,0,Idiom/Fixed expression,5.1,0.43,6.43,0.19,100,0,0,0,0.14,3,0.87
+blow someone's mind,2,1.490711985,10,0,Idiom/Fixed expression,5.5,0.32,6.63,0.06,74.07,25.93,25.93,0,0.13,1.83,0.13
+blow to kingdom come,1.3,0.674948558,10,2,Idiom/Fixed expression,3.7,0.67,5.88,0.54,28.57,71.43,60.71,10.71,0.82,2.14,0.45
+blow your top,2,1.414213562,10,0,Idiom/Fixed expression,5.2,0.51,6.7,0.04,81.48,18.52,18.52,0,0.03,1.89,0.25
+break the ice,2.4,1.712697677,10,1,Idiom/Fixed expression,6,0.2,6.58,0.11,92.86,7.14,3.57,3.57,0.2,6,0.27
+bring home the bacon,2.3,1.33749351,10,0,Idiom/Fixed expression,4.6,0.58,6.73,0.04,85.71,14.29,7.14,7.14,0.67,5.67,0.63
+burn the midnight oil,2.090909091,1.300349603,11,0,Idiom/Fixed expression,4,0.7,5.78,0.83,78.57,21.43,3.57,17.86,0.73,5.22,0.66
+bury the hatchet,2.1,1.595131482,10,0,Idiom/Fixed expression,5.4,0.42,6.35,0.19,75,25,14.29,10.71,0.53,6.28,0.4
+by word of mouth,2.272727273,1.348399725,11,0,Idiom/Fixed expression,5.5,0.49,6.58,0.16,10.71,89.29,3.57,85.71,0.82,4.39,1.07
+call the shots,2.3,1.33749351,10,0,Idiom/Fixed expression,6.2,0.27,6.7,0.07,25,75,46.43,28.57,0,4.11,0.86
+can't believe my ears,1.727272727,1.272077756,11,0,Idiom/Fixed expression,5,0.53,6.65,0.11,7.14,92.86,25,67.86,0.14,3.61,1.02
+cash in your chips,2.529411765,1.280510009,17,2,Idiom/Fixed expression,3.6,0.55,5.13,0.6,3.57,96.43,21.43,75,0.25,4.54,0.95
+chew the fat,2.083333333,0.99620492,12,2,Idiom/Fixed expression,3.8,0.72,5.55,0.85,96.43,3.57,3.57,0,0.29,5.18,0.93
+clear the air,2,1.333333333,10,0,Idiom/Fixed expression,5.5,0.31,6.55,0.12,57.14,42.86,35.71,7.14,0.17,4.33,0.71
+come up roses,1.6,0.843274043,10,2,Idiom/Fixed expression,3,0.78,4.6,0.99,60.71,39.29,28.57,7.14,0,2.68,0.58
+crack a joke,2.25,1.544785952,12,0,Idiom/Fixed expression,5.6,0.36,6.83,0.03,57.14,42.86,14.29,28.57,0.04,1.61,0.32
+crack the whip,2.9,1.663329993,10,0,Idiom/Fixed expression,4.8,0.85,5.78,0.36,70.37,29.63,14.81,14.81,0.17,5.28,0.65
+cramp someone's style,1.8,0.918936583,10,0,Idiom/Fixed expression,5.1,0.3,6.53,0.19,32.14,67.86,3.57,64.29,0.75,3.5,0.86
+dressed to kill,2.176470588,1.286239389,17,1,Idiom/Fixed expression,5.3,0.4,6.48,0.18,42.86,57.14,46.43,10.71,0.54,3.71,0.85
+drive a hard bargain,1.4,0.516397779,10,0,Idiom/Fixed expression,4.9,0.34,6.83,0.04,81.48,18.52,3.7,14.81,0.83,2.06,0.28
+face the music,1.8,1.316561177,10,0,Idiom/Fixed expression,6.2,0.19,6.7,0.07,60.71,39.29,35.71,3.57,0.41,3,0.84
+fall on deaf ears,2.1,1.449137675,10,0,Idiom/Fixed expression,3.5,0.7,5.5,0.79,53.57,46.43,17.86,25,0.71,3.75,0.75
+feather one's nest,1.416666667,0.900336637,12,4,Idiom/Fixed expression,2.5,0.75,4.13,0.95,85.71,14.29,7.14,7.14,0.04,3.68,0.69
+fish out of water,2.3,1.702938637,10,0,Idiom/Fixed expression,4.6,0.64,6.1,0.39,85.71,14.29,7.14,7.14,0.9,5.94,0.47
+fit as a fiddle,1.727272727,1.009049958,11,0,Idiom/Fixed expression,4.3,0.74,5.9,0.45,21.43,78.57,67.89,10.71,0.61,2.14,0.62
+flash in the pan,1.3,0.483045892,10,3,Idiom/Fixed expression,2.8,0.53,4.4,1.05,35.71,64.29,53.57,10.71,0.18,2.54,0.61
+food for thought,2.2,1.398411798,10,1,Idiom/Fixed expression,5.4,0.31,5.98,0.28,50,50,28.57,21.43,0.75,3.5,0.67
+foot the bill,2,1.341640786,11,0,Compound noun,4.4,0.91,5.58,0.82,67.86,32.14,17.86,14.29,0.47,2.17,0.8
+force someone's hand,2.3,1.418136492,10,0,Idiom/Fixed expression,3.4,0.39,4.73,0.65,3.57,96.43,28.57,67.86,0.25,5.21,0.49
+frog in one's throat,2.7,1.567021236,10,1,Idiom/Fixed expression,4.8,0.6,6.55,0.14,64.29,35.71,35.71,0,0.6,2.39,0.44
+get the picture,3.083333333,1.164500153,12,0,Idiom/Fixed expression,6.3,0.11,6.68,0.12,59.26,40.74,18.52,22.22,0.11,4.89,0.65
+get your goat,1.6,0.699205899,10,1,Idiom/Fixed expression,3.3,0.69,4.65,0.9,96.43,3.57,3.57,0,0,4.61,0.97
+give it a whirl,2.1,1.449137675,10,0,Idiom/Fixed expression,3.7,0.55,5.73,0.74,61.71,39.29,21.43,17.86,0.04,4.93,0.71
+give the cold shoulder,1.7,1.33749351,10,0,Idiom/Fixed expression,6.4,0.1,6.9,0.02,67.86,32.14,10.71,21.43,0.57,2.83,0.43
+give the sack,2.3,1.33749351,10,0,Idiom/Fixed expression,2,0.47,3.23,1,64.29,35.71,10.71,25,0,4.68,0.95
+go against the grain,2.8,1.475729575,10,0,Idiom/Fixed expression,3.6,0.69,5.53,0.51,35.71,64.29,32.14,28.57,0.18,3.71,1
+go the whole hog,2.5,1.433720878,10,2,Idiom/Fixed expression,1.7,0.41,3.63,0.94,78.57,21.43,17.86,3.57,0,1.75,0.25
+go to pieces,1.9,1.286683938,10,0,Idiom/Fixed expression,5.5,0.62,6.3,0.3,51.85,48.15,37.04,11.11,0,3.82,0.84
+handle with kid gloves,2.6,1.646545205,10,1,Idiom/Fixed expression,2.8,0.98,4.35,1.13,21.43,78.57,57.14,21.43,0.25,4.46,0.78
+have a fling,2.1,0.875595036,10,0,Idiom/Fixed expression,5.6,0.38,6.68,0.04,89.29,10.71,7.14,3.57,0,3.33,0.59
+have an axe to grind,2.6,1.712697677,10,0,Idiom/Fixed expression,3.1,0.69,4.6,0.88,96.43,3.57,0,3.57,0.04,5.07,0.68
+hit the sack,2.545454545,1.507556723,11,0,Idiom/Fixed expression,6.2,0.31,6.53,0.25,82.14,17.86,10.71,7.14,0.03,5.94,0.39
+hold your horses,1.8,1.475729575,10,0,Idiom/Fixed expression,5.9,0.33,6.65,0.32,32.14,67.86,60.71,7.14,0.18,5.21,0.83
+in a pickle,2.4,1.264911064,10,0,Idiom/Fixed expression,3.4,0.6,5.18,1.01,78.57,21.43,17.86,3.57,0,2.71,0.85
+in hot water,1.7,1.251665557,10,0,Idiom/Fixed expression,5.7,0.3,6.8,0.03,88.89,11.11,11.11,0,0.63,6.44,0.24
+in seventh heaven,2.1,1.370320319,10,0,Idiom/Fixed expression,5,0.57,6.35,0.33,46.43,53.57,46.43,7.14,0.29,2.43,0.73
+in the nick of time,2.9,1.286683938,10,0,Idiom/Fixed expression,5.7,0.25,6.63,0.15,44.44,55.56,14.81,40.74,1,2.79,0.75
+jump the gun,1.7,0.823272602,10,1,Idiom/Fixed expression,6.1,0.2,6.55,0.12,64.29,35.71,28.57,7.14,0.33,3.28,0.71
+keep a level head,2.3,1.418136492,10,0,Idiom/Fixed expression,5.2,0.41,6.6,0.11,25.93,74.07,18.52,55.56,0.75,3.82,0.72
+kick the bucket,2.727272727,1.348399725,11,0,Idiom/Fixed expression,5.5,0.43,6.65,0.11,100,0,0,0,0.27,6.44,0.32
+kick up your heels,2.8,1.932183566,10,2,Idiom/Fixed expression,3.6,0.61,5.43,0.47,64.29,35.71,14.29,21.43,0.61,5.93,0.3
+lay down the law,1.8,1.135292424,10,0,Idiom/Fixed expression,4.9,0.62,6.58,0.12,37.04,62.96,11.11,51.85,0.61,3.14,0.79
+learn by heart,1.6,0.966091783,10,0,Idiom/Fixed expression,6.1,0.34,6.75,0.06,25.93,74.07,51.85,22.22,0.07,3.32,0.91
+learn the ropes,1.727272727,0.786245393,11,0,Idiom/Fixed expression,5.1,0.47,6.68,0.08,40.74,59.26,51.85,7.41,0.07,3.21,0.64
+lend an ear,2.5,1.649915823,10,0,Idiom/Fixed expression,5.6,0.35,6.23,0.41,55.56,44.44,22.22,22.22,0.22,2.06,0.47
+let the cat out of the bag,1.5,0.707106781,10,0,Idiom/Fixed expression,4.8,0.5,6.55,0.26,78.57,21.43,17.86,3.57,0.7,6.17,0.32
+lie through one's teeth,2.090909091,1.221027883,11,0,Idiom/Fixed expression,5.6,0.4,6.73,0.06,18.52,81.48,62.96,18.52,0.86,3.57,1.02
+long arm of the law,1.636363636,1.026910636,11,2,Idiom/Fixed expression,3.2,0.82,5.08,0.96,32.14,67.86,32.14,35.71,0.46,2,0.53
+lose face,1.9,1.449137675,10,0,Idiom/Fixed expression,5.1,0.61,5.93,0.5,57.14,42.86,28.57,14.29,0.04,2.17,0.8
+lose one's touch,1.818181818,1.250454463,11,0,Idiom/Fixed expression,5.2,0.51,5.75,0.49,14.29,85.71,28.57,57.14,0,4.07,0.79
+lose your cool,2.5,1.509230856,10,0,Idiom/Fixed expression,5.4,0.3,6.65,0.08,17.86,82.14,39.29,42.86,0.04,3.11,0.9
+make a clean sweep,2.1,1.286683938,10,0,Idiom/Fixed expression,4,0.49,6.1,0.19,75,25,17.86,7.14,0.1,4.94,0.66
+make a pass,3.1,1.449137675,10,0,Idiom/Fixed expression,5.7,0.41,6.83,0.06,92.59,7.41,7.41,0,0,4.17,1.02
+make no bones about,1.7,1.251665557,10,3,Idiom/Fixed expression,4.4,0.51,5.35,0.76,92.86,7.14,7.14,0,0.73,1.5,0.09
+miss the boat,2.363636364,1.026910636,11,0,Idiom/Fixed expression,4.8,0.6,5.55,0.6,33.33,66.67,51.85,14.81,0.25,6.32,0.2
+nip in the bud,2.2,1.135292424,10,0,Idiom/Fixed expression,4.6,0.78,5.88,0.52,81.48,18.52,11.11,7.41,0.93,3.56,0.65
+nurse a grudge,2.181818182,1.470930441,11,0,Idiom/Fixed expression,2.6,0.46,4.25,0.86,32.14,67.86,35.71,32.14,0,2.25,0.45
+out of the blue,1.727272727,1.009049958,11,0,Idiom/Fixed expression,6.8,0.05,6.78,0.05,85.71,14.29,14.29,0,0.23,1.67,0.27
+out of thin air,2.5625,1.364734406,16,1,Idiom/Fixed expression,6.5,0.13,6.78,0.03,50,50,39.29,10.71,0.61,3.46,0.61
+over the hill,3.272727273,1.61807967,11,0,Idiom/Fixed expression,6.3,0.13,6.95,0.01,78.57,21.43,21.43,0,0.43,6.5,0.28
+pack a punch,2.545454545,1.439696938,11,0,Idiom/Fixed expression,4,0.89,5.28,0.96,57.14,42.86,32.14,10.71,0.07,2.67,0.65
+paint the town,2.352941176,1.538716042,17,2,Idiom/Fixed expression,4.9,0.69,5.8,0.67,100,0,0,0,0.07,2.72,0.46
+par for the course,1.722222222,0.826442095,18,3,Idiom/Fixed expression,4.1,0.93,5.33,0.59,70.37,29.63,7.41,22.22,0.57,4.5,0.72
+pass the buck,1.636363636,0.924416278,11,1,Idiom/Fixed expression,5,0.73,5.48,0.77,35.71,64.29,46.43,17.86,0.11,5.11,0.82
+pay lip service,2.4,0.966091783,10,3,Idiom/Fixed expression,3.5,0.62,5,0.61,60.71,39.29,32.14,7.14,0.54,2.07,0.39
+pay through the nose,1.9,1.286683938,10,0,Idiom/Fixed expression,3.9,1.06,5.35,0.86,67.86,32.14,28.57,3.57,0.32,1.71,0.41
+play by ear,2,1.054092553,10,0,Idiom/Fixed expression,5.6,0.38,6.63,0.15,42.86,57.14,25,32.14,0.25,3.14,0.85
+play the market,1.692307692,1.031553471,13,1,Idiom/Fixed expression,3.8,0.8,4.85,0.74,21.43,78.57,3.57,75,0,3.32,0.96
+play with fire,2.5,1.269295518,10,0,Idiom/Fixed expression,6,0.26,6.45,0.12,17.86,82.14,32.14,50,0.14,6,0.43
+pop the question,2.2,1.135292424,10,0,Idiom/Fixed expression,5.3,0.42,6.8,0.02,64.29,35.71,21.43,14.29,0.13,1.78,0.39
+pour one's heart out,1.5,0.971825316,10,0,Idiom/Fixed expression,5.5,0.56,6.35,0.22,40.74,59.26,48.15,11.11,0.96,2.71,0.77
+praise to the skies,2.272727273,1.272077756,11,2,Idiom/Fixed expression,2.9,0.63,4.93,0.74,25,75,39.29,35.71,0,3.71,0.87
+pull someone's leg,1.545454545,1.035725481,11,0,Idiom/Fixed expression,5.9,0.26,6.9,0.02,89.29,10.71,7.14,3.57,0.53,5.17,0.84
+pull the plug,3,1.414213562,10,0,Idiom/Fixed expression,4.9,0.46,5.53,0.58,57.14,42.86,25,17.86,0.07,6.56,0.13
+put the screws on,2.4,1.173787791,10,0,Idiom/Fixed expression,2.8,0.67,4.4,1,92.86,7.14,7.14,0,0.18,4.82,1.02
+rack one's brains,2.1,1.663329993,10,0,Idiom/Fixed expression,5.4,0.39,6.88,0.02,60.71,39.29,14.29,25,0.63,1.78,0.22
+raise the roof,2.454545455,1.634847783,11,0,Idiom/Fixed expression,3.4,0.49,5,0.73,82.14,17.86,10.71,7.14,0.07,5.04,0.63
+rake over the coals,3.3,1.636391694,10,0,Idiom/Fixed expression,4.2,0.77,5.58,0.72,92.86,7.14,3.57,3.57,0.3,4.44,0.7
+read between the lines,2,1.483239697,11,0,Idiom/Fixed expression,5.6,0.32,6.83,0.02,50,50,21.43,28.57,1,4.79,0.82
+rise to the bait,1.9,0.994428926,10,1,Idiom/Fixed expression,1.8,0.33,3,0.76,71.43,28.57,10.71,17.86,0,3.18,1
+rule of thumb,2,1.154700538,10,0,Idiom/Fixed expression,5,0.44,6.15,0.47,53.57,46.43,39.29,7.14,0.7,1.78,0.39
+rule with an iron fist,1.9,1.370320319,10,0,Idiom/Fixed expression,4.1,0.56,6.33,0.2,25,75,35.71,39.29,0.54,2.93,0.54
+run into the ground,2.2,1.398411798,10,1,Idiom/Fixed expression,3.7,0.92,5.03,0.79,53.57,46.43,25,21.43,0,4.25,0.74
+save your skin,1.454545455,0.820199532,11,0,Idiom/Fixed expression,3.7,0.75,6.03,0.43,10.71,89.29,75,14.29,0,3.93,0.87
+scream blue murder,1.9,1.286683938,10,3,Idiom/Fixed expression,2,0.69,3.63,0.95,28.57,71.43,39.29,32.14,0.32,3.11,0.95
+shoot the breeze,2,1.054092553,10,0,Idiom/Fixed expression,5.6,0.24,6.65,0.2,100,0,0,0,0.1,1.83,0.3
+sit on the fence,2.9,1.449137675,10,0,Idiom/Fixed expression,2.6,0.56,3.6,0.94,89.29,10.71,7.14,3.57,0.04,5.96,0.51
+skate on thin ice,2.8,1.932183566,10,0,Idiom/Fixed expression,4.7,0.47,6.65,0.05,78.57,21.43,14.29,7.14,1,6.56,0.09
+slip one's mind,1.181818182,0.404519917,11,0,Idiom/Fixed expression,6.4,0.21,6.73,0.12,33.33,66.67,18.52,48.15,0.14,2.86,0.78
+speak your mind,2.4,1.349897115,10,0,Idiom/Fixed expression,5.9,0.4,6.98,0,0,100,17.86,82.14,0.82,4.18,0.97
+steal someone's thunder,1.3,0.948683298,10,0,Idiom/Fixed expression,2.3,0.41,4.23,1.23,42.86,57.14,50,7.14,0,1.64,0.3
+steal the show,2,1.247219129,10,0,Idiom/Fixed expression,5.1,0.51,6.78,0.03,25,75,28.57,46.43,0,4.29,0.81
+swallow one's pride,1.9,1.449137675,10,0,Idiom/Fixed expression,6.2,0.27,6.65,0.11,59.26,40.74,25.93,14.81,0.67,2.06,0.51
+take someone to the cleaners,2.7,1.33749351,10,0,Idiom/Fixed expression,3.7,0.72,5.7,0.68,82.14,17.86,10.71,7.14,0.11,5.21,1.07
+take the bull by the horns,2.181818182,1.401298099,11,0,Idiom/Fixed expression,4.5,0.6,5.8,0.39,92.86,7.14,7.14,0,0.73,6,0.27
+take the cake,1.5,1.08012345,10,1,Idiom/Fixed expression,4.5,0.49,6.13,0.38,96.43,3.57,3.57,0,0.07,5.78,0.58
+take with a grain of salt,1.4,0.699205899,10,0,Idiom/Fixed expression,5.8,0.53,6.03,0.39,89.29,10.71,7.14,3.57,0.83,3.28,0.67
+throw the book at,2,1.632993162,10,0,Idiom/Fixed expression,4.2,0.76,5.8,0.49,89.29,10.71,7.14,3.57,0.17,5.39,0.573
+throw to the wolves,1.6,1.264911064,10,1,Idiom/Fixed expression,3.3,0.65,5.33,0.41,28.57,71.43,42.86,28.57,0,4.89,0.64
+tie the knot,2.9,1.791957341,10,0,Idiom/Fixed expression,6,0.26,6.9,0.02,92.86,7.14,7.14,0,0.5,6.33,0.4
+tip of the iceberg,2.454545455,1.12815215,11,0,Idiom/Fixed expression,5,0.46,6.6,0.08,64.29,35.71,17.86,17.86,0.53,6.56,0.28
+twist someone's arm,2.8,1.813529401,10,1,Idiom/Fixed expression,6.1,0.24,6.73,0.06,64.29,35.71,17.89,17.86,0.83,6.22,0.24
+two peas in a pod,2.2,1.229272594,10,0,Idiom/Fixed expression,4.5,0.47,6.2,0.52,50,50,21.43,28.57,0.86,5.75,0.59
+under someone's thumb,1.5,0.971825316,10,0,Idiom/Fixed expression,4.1,0.57,5.05,0.86,70.37,29.63,22.22,7.41,0.27,3,0.84
+under the weather,1.8,1.135292424,10,0,Idiom/Fixed expression,5.2,0.6,6.38,0.38,96.46,3.57,3.57,0,0.03,1.67,0.13
+upset the applecart,2,1.414213562,10,3,Idiom/Fixed expression,2,0.61,6.38,0.38,96.43,3.57,3.57,0,0.03,1.67,0.13
+waste your breath,2.1,1.197219,10,2,Idiom/Fixed expression,5.9,0.24,6.78,0.03,28.57,71.43,25,46.43,0.07,5.36,0.6
+wear the pants,2.636363636,1.501514387,11,0,Idiom/Fixed expression,4.6,0.69,5.85,0.81,85.71,14.29,3.57,10.71,0.33,6.5,0.28
+with flying colors,1.727272727,1.272077756,11,0,Idiom/Fixed expression,5.7,0.25,6.45,0.17,96.43,3.57,3.57,0,0.83,3,0.84

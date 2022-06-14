@@ -1,0 +1,102 @@
+---
+title: "Multiword Corr"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(moments)
+library(tm)#Function to remove strings
+library(reshape2)#for data manipulation
+library(nlme)#for ICC
+library(multilevel)#for ICC
+library(arsenal)#for dataframe comparisons
+library(jtools)#for theme_apa function for plots
+library(apaTables)#for APA format tables
+library(fuzzyjoin)
+```
+
+```{r organize output}
+#Create paths
+path_in = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Input"
+
+figures_out = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Figures"
+
+norms = "/Users/emiko/OneDrive - University of Calgary/1. Research/Research Projects/Active/Multiword Expressions/Data/multiword-exp/Input/Other Norms"
+
+```
+
+```{r read data}
+#Get expression coding
+expression_coding <- read_csv(file = file.path(path_in, "Multiword_expression_categories_R1.csv"))
+#Get summarized concreteness ratings for expressions
+master_ratings <- read_csv("MultiwordExpression_Concreteness_Ratings.csv")
+
+#Import other norming data
+multi_titone <- read_csv(file = file.path(norms, "Multi_titone.csv"))
+libben2008 <- read_csv(file = file.path(norms, "LibbenTitone-Norms.csv"))
+jolsvai2020 <- read_csv(file = file.path(norms, "Jolsvai-2020-Meaning.csv"))
+bulkes2017F <- read_csv(file = file.path(norms, "Bulkes-Tanner-2017-Familiarity.csv"))
+bulkes2017M <- read_csv(file = file.path(norms, "Bulkes-Tanner-2017-Meaningful.csv"))
+bulkes2017P <- read_csv(file = file.path(norms, "Bulkes-Tanner-2017-Predict.csv"))
+bulkes2017LP <- read_csv(file = file.path(norms, "Bulkes-Tanner-2017-LitPlaus.csv"))
+bulkes2017D <- read_csv(file = file.path(norms, "Bulkes-Tanner-2017-GlobalDecomp.csv"))
+brysbaert2017 <- read_csv(file = file.path(norms, "Brysbaert-Biemiller-2017-AoA.csv"))
+
+#make all lower case
+libben2008$Expression <- tolower(libben2008$Expression)
+bulkes2017P$Expression <- tolower(bulkes2017P$Expression)
+bulkes2017F$Expression <- tolower(bulkes2017F$Expression)
+bulkes2017M$Expression <- tolower(bulkes2017M$Expression)
+bulkes2017LP$Expression <- tolower(bulkes2017LP$Expression)
+bulkes2017D$Expression <- tolower(bulkes2017D$Expression)
+
+#reduce brysbaert 2017 to lowest aoa for each unique expression
+brysbaert_2017_lowest <- brysbaert2017 %>% 
+  dplyr::group_by(Expression) %>% 
+  dplyr::summarise(MinAoATest = min(AoAtestbased), Meanings= n())
+
+```
+
+```{r R1 overlap with other multiword datasets}
+#Get expressions with more than 10 valid ratings
+master_complete <- master_ratings %>% 
+  filter(N_Rate >= 10)
+
+#Add expression type
+master_complete <- left_join(master_complete, expression_coding, by = "Expression")
+
+#Join with our ratings
+multi_libben <- inner_join(master_complete, libben2008, by = "Expression")
+multi_jolsvai <- inner_join(master_complete, jolsvai2020, by = "Expression")
+multi_brysbaert <- inner_join(master_complete, brysbaert_2017_lowest, by = "Expression")
+multi_bulkes <- list(master_complete, bulkes2017F, bulkes2017M, bulkes2017P, bulkes2017LP, bulkes2017D) %>%
+  purrr::reduce(inner_join, by = "Expression")
+
+#Calculate correlations
+##AoA
+cor(multi_brysbaert$Mean_C, multi_brysbaert$MinAoATest)
+##Frequency
+cor(multi_titone$Mean_C, multi_titone$FREQ)
+cor(multi_jolsvai$Mean_C, multi_jolsvai$PhraseFreq)
+##Familiarity
+cor(multi_bulkes$Mean_C, multi_bulkes$Fam)
+##Meaningfulness
+cor(multi_titone$Mean_C, multi_titone$MEAN)
+cor(multi_bulkes$Mean_C, multi_bulkes$Meaningful)
+cor(multi_jolsvai$Mean_C, multi_jolsvai$Meaningfulness)
+##Idiomaticity
+cor(multi_jolsvai$Mean_C, multi_jolsvai$Idiomaticity)
+##Predictability
+cor(multi_titone$Mean_C, multi_titone$PRED)
+cor(multi_bulkes$Mean_C, multi_bulkes$`Predict(percent)`)
+##Literality/Plausability
+cor(multi_titone$Mean_C, multi_titone$LIT)
+cor(multi_bulkes$Mean_C, multi_bulkes$LitPlaus)
+##Decomposability
+cor(multi_titone$Mean_C, multi_titone$DEC)
+cor(multi_bulkes$Mean_C, multi_bulkes$`Decomposability(percent)`)
+
+```
+

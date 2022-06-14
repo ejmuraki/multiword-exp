@@ -1,0 +1,871 @@
+﻿Expression,# of ratings (n=),Decomposability(percent)
+Bare one's soul,110,0.6804
+Be a babe in the woods,103,0.2826
+Be a backseat driver,104,0.5507
+Be a bad apple in the barrel,104,0.318
+Be a balancing act,104,0.6356
+Be a ball and chain,104,0.2871
+Be a ballpark figure,105,0.229
+Be a basketcase,110,0.1286
+Be a bit much,110,0.693
+Be a blast from the past,110,0.4731
+Be a blessing in disguise,104,0.7982
+Be a breath of fresh air,105,0.4369
+Be a breeze,109,0.3328
+Be a bumpy ride,108,0.7766
+Be a bundle of nerves,105,0.7135
+Be a busy bee,104,0.4599
+Be a can of worms,104,0.1343
+Be a carbon copy,105,0.6944
+Be a Catch 22,105,0.1239
+Be a cheap shot,105,0.4664
+Be a chink in someone's armor,104,0.533
+Be a chip off the old block,106,0.3294
+Be a class act,104,0.6054
+Be a close call,103,0.6985
+Be a cog in the machine,105,0.4842
+Be a conversation piece,110,0.7735
+Be a couch potato,105,0.2088
+Be a creature of habit,105,0.7707
+Be a dark horse,106,0.0937
+Be a dead ringer for someone,104,0.2142
+Be a different animal,104,0.4037
+Be a done deal,105,0.9046
+Be a double whammy,104,0.4806
+Be a double-edged sword,106,0.3942
+Be a drag,104,0.4127
+Be a drop in the ocean,108,0.6331
+Be a fallen angel,105,0.3625
+Be a false alarm,105,0.8289
+Be a feather in one's cap,110,0.1611
+Be a flash in the pan,110,0.1708
+Be a glutton for punishment,105,0.5428
+Be a guinea pig,105,0.2192
+Be a happy medium,110,0.7381
+Be a hard act to follow,104,0.7873
+Be a hard sell,104,0.6896
+Be a household name,106,0.6813
+Be a jack of all trades,110,0.5862
+Be a knight in shining armor,106,0.463
+Be a ladies' man,105,0.8665
+Be a lost cause,110,0.8196
+Be a mamma's boy,108,0.8438
+Be a melting pot,108,0.3393
+Be a mixed bag,109,0.3834
+Be a mutual admiration society,103,0.6791
+Be a needle in a haystack,105,0.5147
+Be a nervous wreck,103,0.7285
+Be a no-win situation,110,0.8637
+Be a one-man band,109,0.4719
+Be a party pooper,103,0.3775
+Be a piece of cake,105,0.152
+Be a powder keg,109,0.2372
+Be a quick fix,104,0.8944
+Be a race against time,110,0.883
+Be a ray of sunshine,105,0.3431
+Be a recipe for disaster,106,0.6122
+Be a recipe for success,105,0.7794
+Be a riot,105,0.2476
+Be a rule of thumb,105,0.2756
+Be a safe bet,105,0.791
+Be a shadow of one's former self,104,0.6233
+Be a shot in the dark,110,0.4721
+Be a shoulder to cry on,109,0.7346
+Be a sight for sore eyes,104,0.4965
+Be a smart alec,105,0.2959
+Be a smooth ride,110,0.8916
+Be a step in the right direction,106,0.7817
+Be a stumbling block,105,0.6275
+Be a sucker for something,110,0.4904
+Be a thorn in one's side,103,0.5747
+Be a three-ring circus,110,0.2331
+Be a tough cookie,105,0.2859
+Be a vicious circle,105,0.5421
+Be a wet blanket,105,0.1062
+Be a wild card,100,0.4251
+Be a window of opportunity,105,0.5806
+Be a win-win situation,106,0.8679
+Be across the board,108,0.5645
+Be ahead of one's time,105,0.5606
+Be ahead of the game,109,0.6511
+Be alive and kicking,106,0.8672
+Be all doom and gloom,103,0.8434
+Be all dressed up with nowhere to go,104,0.884
+Be all ears,105,0.5811
+Be all in a day's work,106,0.7354
+Be all over someone,105,0.7614
+Be all over the place,103,0.7085
+"Be all-singing, all-dancing",105,0.4572
+Be an acquired taste,104,0.7582
+Be an eager beaver,104,0.3352
+Be an early bird,104,0.48
+Be an item,103,0.4647
+Be an open book,109,0.4253
+Be an unholy alliance,106,0.6802
+Be anybody's guess,105,0.9044
+Be as tough as boots,108,0.411
+Be asking for it,108,0.6059
+Be at a loss for words,106,0.8301
+Be at death's door,103,0.6996
+Be at each other's throats,104,0.4599
+Be at one's wit's end,110,0.5537
+Be at someone's beck and call,110,0.7052
+Be at the back of one's mind,105,0.6857
+Be back at square one,109,0.586
+Be behind something,104,0.7397
+Be bent on doing something,104,0.4312
+Be big on something,103,0.4253
+Be cannon fodder,110,0.2868
+Be caught napping,103,0.6845
+Be caught short,103,0.4658
+Be climbing the walls,104,0.3567
+Be close to one's heart,105,0.6284
+Be clued in about something,105,0.7629
+Be dead in the water,104,0.57
+Be dead to the world,106,0.3675
+Be down in the dumps,105,0.4568
+Be dressed to kill,105,0.2861
+Be easy money,110,0.7918
+Be easy on the eye,103,0.6008
+Be fed up with something/one,103,0.5508
+Be firing on all cylinders,109,0.348
+Be from all walks of life,108,0.6979
+Be full of holes,105,0.2865
+Be full of oneself,105,0.5807
+Be grasping at straws,108,0.3152
+Be green with envy,105,0.3616
+Be hard to swallow,108,0.5086
+Be hot off the press,110,0.6008
+Be hung up on something,106,0.4131
+Be icing on the cake,109,0.408
+Be in a vacuum,104,0.6107
+Be in a world of one's own,105,0.6096
+Be in cahoots with,110,0.5633
+Be in good company,106,0.906
+Be in mint condition,110,0.7437
+Be in one's blood,105,0.3932
+Be in one's element,105,0.5519
+Be in someone's clutches,105,0.658
+Be in someone's good graces,110,0.7543
+Be in the air,106,0.3764
+Be in the black,103,0.2243
+Be in the cards,103,0.2809
+Be in the driver's seat,105,0.6284
+Be in the hot seat,106,0.3796
+Be in the public eye,105,0.8186
+Be in the running,104,0.5844
+Be in the same ballpark,105,0.4074
+Be in the spotlight,110,0.8216
+Be larger than life,103,0.4147
+Be left holding the bag,110,0.3704
+Be let off lightly,104,0.6134
+Be like a slap in the face,103,0.5725
+Be no big deal,103,0.8617
+Be no spring chicken,110,0.2782
+Be none the wiser,105,0.7438
+Be not all there,103,0.4842
+Be nuts about something,105,0.3706
+Be off base,104,0.5078
+Be off one's rocker,106,0.1506
+Be off the cuff,105,0.1811
+Be on a slippery slope,104,0.6426
+Be on auto-pilot,105,0.5905
+Be on someone's back,110,0.3186
+Be on the ball,105,0.2859
+Be on the edge of one's seat,103,0.553
+Be on the go,105,0.7716
+Be on the horizon,103,0.7002
+Be on the mend,105,0.7052
+Be on the receiving end of something,103,0.7462
+Be on the tip of one's tongue,110,0.501
+Be on the warpath,105,0.6449
+Be on top of the world,104,0.3659
+Be one of the boys,103,0.6525
+Be one's best bet,104,0.8461
+Be out cold,103,0.5719
+Be out for blood,103,0.4458
+Be out like a light,106,0.4452
+Be out of bounds,105,0.8388
+Be out of it,104,0.5844
+Be out of line,104,0.6056
+Be out of one's league,105,0.5903
+Be out of order,105,0.8478
+Be out of the blue,104,0.2011
+Be out of the closet,110,0.259
+Be out of the question,105,0.6849
+Be out of touch,105,0.6394
+Be out to lunch,110,0.2832
+Be over the moon,105,0.1241
+Be quick on the draw,109,0.5947
+Be ready to roll,110,0.5
+Be right up someone's alley,105,0.3336
+Be rolling in the aisles,110,0.2341
+Be sacrifice on the altar of something,104,0.3968
+Be short and sweet,105,0.7812
+Be sitting on a goldmine,105,0.6188
+Be skating on thin ice,110,0.5507
+Be small potatoes,103,0.2149
+Be sold on something,104,0.6263
+Be someone's baby,103,0.543
+Be someone's bag of tricks,105,0.4107
+Be someone's better half,105,0.3799
+Be someone's bread and butter,104,0.1927
+Be someone's finest hour,104,0.6341
+Be someone's other half,110,0.4712
+Be someone's partner in crime,104,0.7884
+Be spoken for,105,0.3714
+Be the apple of someone's eye,103,0.1266
+Be the bane of someone's existence,109,0.6291
+Be the bomb,105,0.0952
+Be the boy/girl next door,104,0.3644
+Be the cream of the crop,104,0.3952
+Be the lesser of two evils,106,0.755
+Be the life of the party,104,0.702
+Be the moment of truth,110,0.8253
+Be the odd one out,104,0.7492
+Be the unsung hero,110,0.6104
+Be thrilled to bits,105,0.4187
+Be too rich for one's blood,105,0.36
+Be under the influence,106,0.6702
+Be up and running,109,0.657
+Be up in arms about something,103,0.417
+Be up in the air,105,0.3404
+Be wide open,104,0.5656
+Be without rhyme or reason,110,0.7321
+Be young at heart,106,0.7931
+Be/fall under someone's spell,110,0.5968
+Be/feel under the weather,110,0.196
+Be/get a rude awakening,104,0.6141
+Be/get up to speed,105,0.5325
+Beat around the bush,106,0.141
+Beat the system,108,0.7579
+Been around the block,105,0.3433
+Bite one's tongue,105,0.4661
+Bite someone's head off,105,0.2569
+Bite the dust,110,0.2092
+Bleed someone dry,103,0.3026
+Blow someone's cover,103,0.563
+Blow something out of the water,105,0.2571
+Blow something sky-high,110,0.4145
+Blow something wide open,110,0.5189
+Blow the lid off something,103,0.3975
+Blow the whistle on something,105,0.3721
+Blow up in one's face,110,0.3992
+Bore the pants off someone,105,0.3895
+Bored out of one's skull/mind,105,0.7146
+Bounce ideas off someone,104,0.6141
+Break one's back,105,0.5513
+Break someone's heart,104,0.6421
+Break the ice,105,0.1905
+Bring something to the party,104,0.6133
+Broaden one's horizons,110,0.6611
+Build a bridge,106,0.7265
+Burn a hole in one's pocket,105,0.219
+Burn the candle at both ends,108,0.41
+Burn the midnight oil,105,0.3325
+Burst someone's bubble,110,0.2924
+Bury one's head in the sand,103,0.4109
+Bury the hatchet,108,0.3452
+Call it a day,105,0.572
+Call it quits,104,0.7797
+Call someone's bluff,105,0.6865
+Call the shots,105,0.6281
+Carry a torch for someone,104,0.2211
+Cash in one's chips,110,0.7371
+Catch one's breath,103,0.7196
+Catch some Z's,104,0.2604
+Catch someone in the act,106,0.8778
+Catch someone off guard,106,0.8778
+Catch someone red-handed,105,0.2955
+Catch someone with their pants down,104,0.4512
+Catch someone's drift,104,0.2991
+Catch someone's eye,105,0.6852
+Catch your second wind,108,0.4897
+Caught between a rock and a hard place,105,0.4947
+Cause a stir,103,0.5825
+Chance your luck,104,0.9038
+Chomping at the bit,105,0.2192
+Clean up one's act,105,0.6763
+Clear away the cobwebs,104,0.3867
+Come clean,103,0.4964
+Come down hard on someone,104,0.7408
+Come full circle,104,0.7122
+Come in from the cold,106,0.8878
+Come on strong,104,0.6937
+Come out of one's shell,106,0.4327
+Come out of the woodwork,105,0.3331
+Come out on top,105,0.7433
+Come to a crossroads,102,0.7918
+Come to blows,104,0.6563
+Come to one's senses,104,0.6641
+Come to pass,105,0.8164
+Come unhinged,103,0.4575
+Comes with the territory,106,0.5185
+Cost an arm and a leg,105,0.3427
+Couldn't do without it,105,0.7812
+Count one's blessings,105,0.7812
+Cover a lot of ground,104,0.7005
+Cover all one's bases,103,0.5036
+Cover one's back,106,0.7244
+Cover ones tracks,106,0.9046
+Crack the whip,104,0.3361
+Cramp someone's style,109,0.4833
+Cross one's fingers,110,0.4473
+Cross the line,103,0.5713
+Cry wolf,106,0.1321
+Cut a long story short,105,0.8759
+Cut corners,105,0.5435
+Cut something to the bone,104,0.461
+Cut the cord,104,0.5178
+Cut to the chase,105,0.3518
+Cut your losses,105,0.7043
+Cutting it close,109,0.4755
+Deal a blow to something,110,0.8415
+Dig one's own grave,104,0.5007
+Dig up dirt on something/one,108,0.4659
+Do a double take,105,0.7898
+Do a vanishing act,106,0.7813
+Do battle with someone,109,0.8354
+Do in cold blood,106,0.3394
+Do one's homework,105,0.7915
+Do someone a world of good,106,0.7158
+Do someone proud,105,0.7919
+Do someone's dirty work,109,0.8134
+Do something against the clock,104,0.5564
+Do something around the clock,105,0.6863
+Do something at the drop of a hat,104,0.3542
+Do something behind closed doors,104,0.8356
+Do something by the book,108,0.7207
+Do something for all you're worth,106,0.698
+Do something from scratch,104,0.5956
+Do something in one's own time,104,0.874
+Do something in one's sleep,106,0.453
+Do something justice,105,0.6475
+Do something like there's no tomorrow,106,0.5089
+Do something on the spot,105,0.7143
+Do something right off the bat,106,0.3105
+Do something to one's heart's content,110,0.687
+Do the trick,105,0.6569
+Don't bank on something,103,0.377
+Drag one's feet,105,0.6373
+Drag someone into the 21st Century,105,0.2843
+Drag someone kicking and screaming,106,0.6699
+Drag someone through the mud,105,0.324
+Draw the line,110,0.7716
+Drink someone under the table,105,0.3902
+Drive a hard bargain,105,0.6563
+Drive someone crazy,105,0.7037
+Drive someone up the wall,105,0.1622
+Drop a bombshell,106,0.489
+Drown one's sorrows,105,0.4289
+Dry as a bone,105,0.6952
+Earn one's keep,104,0.8159
+Eat someone alive,110,0.2802
+Eat someone for breakfast,104,0.1728
+Extend the olive branch,110,0.2888
+Face the music,104,0.1927
+Fall apart at the seams,105,0.5791
+Fall flat on one's face,109,0.5715
+Fall head over heels,105,0.2075
+Fall into bad company,104,0.7299
+Fall into one's lap,105,0.6475
+Fall off the wagon,105,0.1618
+Fall on deaf ears,106,0.7828
+Fall through the cracks,103,0.5458
+Feel something in one's bones,104,0.5833
+Fight a losing battle,105,0.8099
+Fight tooth and nail,105,0.3614
+Find something hard to stomach,106,0.3871
+Fit as a fiddle,103,0.2509
+Fit someone like a glove,109,0.6868
+Fit the bill,105,0.4662
+Flex one's muscles,108,0.7607
+Fly the coop,105,0.4478
+From head to toe,105,0.6845
+Gather dust,103,0.7091
+Get a grip,104,0.3927
+Get a handle on something,106,0.6396
+Get a headstart,105,0.7052
+Get a kick out of (doing) something,109,0.2407
+Get a rise out of someone,103,0.4647
+Get a slap on the wrist,110,0.7245
+Get an earful,105,0.7709
+Get away from it all,106,0.8497
+Get back on one's feet,105,0.6612
+Get carried away,110,0.4818
+Get down to business,110,0.7745
+Get hot under the collar,103,0.407
+Get in on the act,103,0.7074
+Get in on the ground floor,110,0.4118
+Get into gear,106,0.4904
+Get it together,103,0.6179
+Get more than one bargained for,105,0.8286
+Get off on the wrong foot,110,0.3607
+Get off one's case,110,0.5584
+Get off the ground,110,0.4778
+Get off to a flying start,105,0.4196
+Get on one's soapbox,104,0.2425
+Get on someone's nerves,106,0.7001
+Get one's act together,106,0.6905
+Get out of hand,104,0.5663
+Get over the hump,109,0.628
+Get someone off your back,105,0.4902
+Get someone out of your hair,105,0.3235
+Get something out of one's system,105,0.5619
+Get something straight,110,0.6824
+Get the ball rolling,104,0.5626
+Get the better of someone/thing,105,0.6852
+Get the message,106,0.8771
+Get the picture,105,0.5042
+Get the sack,104,0.2112
+Get the upper hand,110,0.5269
+Get to the bottom of something,105,0.5234
+Get too big for one's boots,103,0.2932
+Get under someone's skin,105,0.3237
+Get up on the wrong side of the bed,102,0.2759
+Get wind of something,104,0.4137
+Get your hands dirty,103,0.6913
+Getting above oneself,104,0.5456
+Give a back-handed compliment,110,0.5305
+Give one's right arm to do something,108,0.4024
+Give oneself a pat on the back,105,0.6758
+Give someone a break,105,0.715
+Give someone a dirty look,110,0.8475
+Give someone a free ride,103,0.7428
+Give someone a piece of your mind,103,0.4158
+Give someone a run for their money,105,0.3905
+Give someone a wide berth,105,0.6955
+Give someone carte blanche,106,0.4156
+Give someone credit for something,105,0.8951
+Give someone grief,104,0.7862
+Give someone the benefit of the doubt,104,0.8059
+Give someone the boot,105,0.2954
+Give someone the brush-off,107,0.418
+Give someone the cold shoulder,104,0.2592
+Give someone the creeps,105,0.6671
+Give someone the green light,105,0.5902
+Give someone the run-around,103,0.493
+Give someone the thumbs up,105,0.6765
+Give someone the willies,108,0.3438
+Give something a bad name,104,0.6537
+Give something a whirl,106,0.3575
+Go about your business,110,0.6956
+Go against the grain,110,0.4443
+Go all out,108,0.5917
+Go along for the ride,104,0.5372
+Go back to basics,105,0.9715
+Go back to the drawing board,108,0.6934
+Go ballistic,109,0.6006
+Go bananas,103,0.1549
+Go belly up,110,0.2725
+Go cold turkey,103,0.0977
+Go down the drain,105,0.6836
+Go Dutch,104,0.1151
+Go for broke,103,0.5302
+Go for the jugular,105,0.4526
+Go from rags to riches,109,0.7581
+Go hand in hand,105,0.8188
+Go into overdrive,109,0.688
+Go into something with one's eyes open,104,0.7405
+Go like clockwork,106,0.5178
+Go off on a tangent,104,0.7111
+Go off the deep end,109,0.2285
+Go off the record,103,0.6696
+Go on a wild goose chase,105,0.3804
+Go out of one's mind,105,0.6473
+Go out of the window,103,0.5353
+Go out of your way to do something,107,0.8225
+Go out on a limb,106,0.3871
+Go out with a bang,104,0.497
+Go pear-shaped,106,0.0755
+Go the distance,108,0.6431
+Go the extra mile,105,0.6479
+Go through something with a fine-toothed comb,104,0.5007
+Go through the motions,103,0.6125
+Go through the roof,109,0.2003
+Go through the wringer,105,0.3322
+Go to a lot of trouble,105,0.8097
+Go to first base,103,0.1849
+Go to town,110,0.2533
+Go under the knife,104,0.6262
+Go up in flames,103,0.513
+Go up in smoke,109,0.5014
+Grab the headlines,104,0.608
+Grin from ear to ear,109,0.8083
+Hang in the balance,104,0.5092
+Hang on someone's every word,105,0.5229
+Hang someone out to dry,105,0.1988
+Hate someone's guts,106,0.6132
+Have a bad hair day,105,0.8862
+Have a bird's-eye view,105,0.8008
+Have a bone to pick ,104,0.1633
+Have a brainstorm,108,0.51
+Have a change of heart,110,0.7082
+Have a chip on one's shoulder,105,0.1522
+Have a claim to fame,105,0.7241
+Have a clean break,103,0.6796
+Have a crack at something,104,0.421
+Have a field day,105,0.2193
+Have a fighting chance,105,0.762
+Have a gentlemen's agreement,106,0.6421
+Have a gleam in one's eye,109,0.3403
+Have a good head on one's shoulders,104,0.7031
+Have a hidden agenda,105,0.8763
+Have a knee-jerk reaction,110,0.6197
+Have a long way to go,105,0.9046
+Have a lot on one's plate,104,0.4512
+Have a lump in one's throat,106,0.3405
+Have a one-track mind,105,0.5599
+Have a passing acquaintance with someone,105,0.7908
+Have a screw loose,103,0.2421
+Have a silver lining,109,0.2677
+Have a sneaking suspicion,105,0.8101
+Have a stab at something,104,0.327
+Have a sweet tooth,109,0.5002
+Have a taste of one's own medicine,106,0.443
+Have a thick skin,110,0.3339
+Have an attitude problem,106,0.9145
+Have an axe to grind,106,0.1506
+Have bad blood (between),104,0.3346
+Have butterflies in one's stomach,103,0.2915
+Have eyes in the back of one's head,108,0.5
+Have had one/a few too many,110,0.7265
+Have one's eye on something,104,0.8296
+Have one's foot in the door,104,0.4602
+Have one's head in the clouds,105,0.2288
+Have someone's blood on one's hands,110,0.5279
+Have something down pat,110,0.4615
+Have something down to a fine art,102,0.4708
+Have something on the brain,109,0.6119
+Have something to prove,106,0.8693
+Have something under one's belt,106,0.1895
+Have something up one's sleeve,110,0.4125
+Have the ball in someone's court,105,0.4352
+Have the goods on someone,105,0.2282
+Have the last laugh,108,0.49
+Have the munchies,105,0.5809
+Have two left feet,108,0.3093
+Have your work cut out for you,109,0.4939
+Hear a pin drop,104,0.6337
+Hear something through the grapevine,106,0.2347
+Hedge one's bets,105,0.5715
+Hit a glass ceiling,108,0.2938
+Hit below the belt,103,0.4792
+Hit rock bottom,106,0.5548
+Hit the books,104,0.51
+Hit the ground running,105,0.4924
+Hit the hard stuff,105,0.229
+Hit the hay,103,0.2355
+Hit the jackpot,104,0.7408
+Hit the mark,104,0.7771
+Hit the nail on the head,104,0.441
+Hit the sack,110,0.3004
+Hold a candle to something/one,105,0.152
+Hold a gun to someone's head,108,0.6245
+Hold all of the cards,104,0.3452
+Hold all the aces,105,0.3987
+Hold down the fort,103,0.4675
+Hold one's own,109,0.5049
+In the eleventh hour,105,0.5343
+In the same breath,105,0.3845
+Join the club,110,0.5729
+Jump on the bandwagon,110,0.4048
+Jump through hoops,105,0.313
+Keep a low profile,105,0.8101
+Keep a straight face,104,0.8252
+Keep an open mind,105,0.7331
+Keep one's ear to the ground,105,0.4098
+Keep someone at arm's length,103,0.8262
+Keep someone guessing,105,0.8486
+Keep someone in the dark,104,0.5485
+Keep someone on their toes,104,0.327
+Keep someone posted,104,0.7212
+Keep something at bay,106,0.5082
+Keep something under wraps,106,0.7336
+Keep your eyes open,108,0.8238
+Keep your head down,103,0.6596
+Kill two birds with one stone,104,0.5115
+Kiss something goodbye,109,0.704
+Knock heads together,105,0.2941
+Knock someone's socks off,106,0.1325
+Know one's place,105,0.8576
+Know something inside out,104,0.5768
+Know something like the back of one's hand,106,0.5751
+Know the score,105,0.705
+Lay down the law,105,0.7524
+Lay something to rest,105,0.7618
+Learn something the hard way,109,0.8722
+Learn the ropes,103,0.3675
+Leave a bad taste in one's mouth,103,0.5519
+Leave no stone unturned,109,0.6193
+Leave one's mark,110,0.8206
+Leave oneself wide open,105,0.6665
+Leave someone in the lurch,105,0.475
+Lend a hand,105,0.7712
+Lend an ear,108,0.7007
+Let off steam,103,0.3321
+Let sleeping dogs lie,105,0.2487
+Let someone off the hook,103,0.427
+Let something slide,104,0.4722
+Let your hair down,110,0.431
+Lick one's chops,109,0.2912
+Lick one's wounds,105,0.3418
+Lie through ones teeth,104,0.5202
+Live a charmed life,106,0.8027
+Live in a dream world,105,0.6552
+Look at the big picture,108,0.7666
+Look like a million bucks,103,0.5719
+Look out for number one,105,0.5715
+Look the part,105,0.7427
+Lose one's cool,105,0.6281
+Lose one's marbles,108,0.2176
+Lost one's edge,103,0.5258
+Love someone to bits,106,0.3771
+Love someone to pieces,103,0.3392
+Make a beeline for something,106,0.4053
+Make a break for something,108,0.5831
+Make a killing,105,0.1618
+Make a splash,103,0.4187
+Make an ass of oneself,104,0.5575
+Make ends meet,104,0.5183
+Make it big,103,0.7079
+Make it worth someone's while,103,0.7185
+Make no bones about something,103,0.1066
+Make one's bed,105,0.285
+Make one's blood boil,104,0.3561
+Make one's skin crawl,103,0.3109
+Make out like a bandit,103,0.5647
+Make someone's day,110,0.5633
+Make the best of something,105,0.9136
+Make the first move,104,0.7967
+Mean the world to someone,105,0.6656
+Meet one's match,108,0.7993
+Meet someone halfway,106,0.8597
+Mind one's own business,110,0.8743
+Miss the boat,105,0.5428
+Miss the bus,106,0.7736
+Miss the point,106,0.8202
+Move up the ladder,103,0.7296
+Name names,104,0.8367
+Need fresh blood,109,0.2285
+Nip something in the bud,110,0.5345
+No bed of roses,103,0.2421
+No hard feelings,105,0.8286
+Not be cut out for something,104,0.4144
+Not be exactly a barrel of laughs,104,0.4896
+Not be rocket science,104,0.5572
+Not be up to par,110,0.6333
+Not dream of doing something,109,0.6143
+Not have a clue,105,0.9048
+Not know someone from Adam,110,0.383
+Not lift a finger,103,0.7879
+Not say a word,104,0.8159
+Not sleep a wink,108,0.7621
+Not someone's cup of tea,105,0.2366
+Not take something lying down,103,0.5175
+Not taking no for an answer,103,0.8711
+Off the top of one's head,103,0.3698
+One of those days,106,0.4615
+Only have eyes for someone,103,0.6302
+Open doors for someone,103,0.5847
+Outstay your welcome,110,0.9635
+Pass the torch,105,0.4004
+Pass with flying colors,106,0.302
+Pat someone on the back,106,0.6991
+Pave the way,110,0.6227
+Pay one's dues,105,0.6769
+Pay the price,110,0.7716
+Pick someone's brain,104,0.3837
+Pick up the ball and run with it,106,0.4135
+Pick up the tab,104,0.7137
+Pinch pennies,104,0.375
+Place something on a pedestal,105,0.6484
+Play ball,103,0.4447
+Play cat and mouse,104,0.4922
+Play chicken,106,0.0751
+Play devil's advocate,104,0.4544
+Play one's cards right,110,0.5902
+Play one's last card,103,0.553
+Play something by ear,105,0.3045
+Play the field,104,0.2791
+Point someone in the right direction,105,0.9053
+Preach to the crowd,105,0.619
+Pull oneself up by their bootstraps,108,0.3538
+Pull out all the stops,110,0.3912
+Pull rank on someone,104,0.6077
+Pull some strings,105,0.285
+Pull something out of a hat,105,0.363
+Pull something out of the bag,108,0.56
+Pull the rug out from under someone,106,0.4726
+Push someone's buttons,105,0.2667
+Push your luck,105,0.666
+Put a damper on something,108,0.4628
+Put all one's eggs in one basket,104,0.4159
+Put all your cards on the table,105,0.4093
+Put down roots,105,0.531
+Put on a brave face,109,0.8404
+Put one's foot down,110,0.4589
+Put oneself in someone else's shoes,105,0.3716
+Put out feelers,106,0.3853
+Put someone in their place,104,0.5866
+Put someone on the spot,105,0.5709
+Put someone out of their misery,105,0.6272
+Put something on the map,110,0.5239
+Put something to bed,104,0.2693
+Put words into someone's mouth,106,0.6503
+Put your back into it,105,0.5521
+Quake in one's boots,104,0.7567
+Rack one's brain,109,0.5358
+Rain on someone's parade,105,0.2958
+Rake someone over the coals,104,0.2904
+Rattle someone's cage,109,0.3343
+Reach the boiling point,103,0.6485
+Read between the lines,110,0.6008
+Read someone like a book,105,0.648
+Read someone's mind,106,0.7749
+Read too much into something,110,0.7533
+Recharge one's batteries,109,0.6095
+Reinvent the wheel,109,0.3602
+Remain nameless,106,0.7546
+Rest one's case,104,0.6326
+Rise to the bait,109,0.5947
+Rock the boat,106,0.2358
+Roll out the red carpet,106,0.338
+Roll up one's sleeves,103,0.6513
+Roll with the punches,105,0.4097
+Rub someone's nose in something,103,0.4281
+Run someone ragged,106,0.6592
+Run something into the ground,110,0.5643
+Saved by the bell,110,0.4712
+Say something behind someone's back,110,0.8014
+Say something under one's breath,106,0.7927
+Scare someone out of their wits,105,0.828
+Scare the living daylights out of someone,108,0.3855
+Score points with someone,105,0.683
+Scrape the bottom of the barrel,104,0.4131
+Scratch the surface,109,0.6104
+See the color of someone's money,105,0.2473
+See the light,105,0.5038
+See the light of day,105,0.4762
+Sell like hot cakes,106,0.4252
+Sell someone short,104,0.3361
+Send a chill down one's spine,108,0.609
+Send someone packing,109,0.7311
+Set the record straight,103,0.6496
+Set the stage,104,0.6805
+Set up shop,105,0.8656
+Set your heart on something,105,0.4757
+Share common ground,105,0.7997
+She won't bite,105,0.5327
+Shoot oneself in the foot,104,0.498
+Shoot the breeze,105,0.143
+Shout something from the rooftops,105,0.6372
+Show one's true colors,104,0.4323
+Show someone the door,104,0.7511
+Show someone who's boss,104,0.8167
+Sign on the dotted line,110,0.7619
+Sing someone's praises,103,0.7479
+Sink or swim,110,0.6323
+Sit up and take notice,105,0.9811
+Sleep like a baby,108,0.7966
+Slip someone's mind,106,0.7742
+Smell a rat,104,0.2626
+Soften the blow,104,0.7405
+Someone's bark is worse than their bite,109,0.4241
+Someone's days are numbered,105,0.7435
+Someone's hands are tied,105,0.7137
+Something has seen better days,105,0.6948
+Something the cat dragged in,103,0.3587
+Speak the same/someone's language,105,0.8099
+Speak your mind,109,0.8475
+Spill one's guts,106,0.2913
+Spread one's wings,110,0.3349
+Spread oneself too thin,105,0.447
+Stand one's ground,104,0.8537
+Stand out from the crowd,110,0.8561
+Stand the test of time,106,0.8113
+Stay on track,104,0.7667
+Steal someone's thunder,104,0.2218
+Steal the show,104,0.5477
+Stick one's neck out,106,0.4338
+Strike a chord with someone,104,0.4593
+Strike gold,105,0.7335
+Strike while the iron is hot,104,0.3259
+Swallow one's pride,105,0.4947
+Sweep the board,110,0.3213
+Take a beating,105,0.7326
+Take a bite out of something,103,0.4515
+Take a raincheck,103,0.4075
+Take a trip down memory lane,105,0.6194
+Take its toll,108,0.6707
+Take one's breath away,105,0.467
+Take someone at their word,110,0.7775
+Take someone down a peg or two,106,0.3016
+Take someone under one's wing,104,0.3071
+Take something by storm,103,0.3181
+Take something the wrong way,109,0.8404
+Take the cake,104,0.1704
+Take the easy way out,104,0.8374
+Take the edge off something,110,0.3972
+Take the plunge,105,0.4272
+Take the rap for something,110,0.5298
+Take your pick,109,0.8895
+Talk shop,106,0.5463
+Teach someone a thing or two,105,0.8099
+Teach someone the ropes,110,0.3176
+Tear your hair out,110,0.4529
+Tempt fate,110,0.7573
+Test the waters,110,0.6064
+Thank ones lucky stars,103,0.3487
+The honeymoon is over,105,0.5915
+Think on one's feet,105,0.4651
+Think outside the box,105,0.3716
+Throw a fit,105,0.6578
+Throw caution to the wind,110,0.3714
+Throw one's hat in the ring,110,0.2427
+Throw someone a curveball,105,0.4481
+Throw someone off balance,103,0.7679
+Throw someone to the dogs,104,0.3546
+Throw your weight around,105,0.3708
+Tie up loose ends,106,0.6214
+Tip the balance,110,0.6044
+To go ape,108,0.2321
+To mean business,106,0.7258
+Touch base,103,0.5491
+Treat someone like dirt,109,0.5837
+Tug at someone's heartstrings,110,0.4884
+Turn a deaf ear to something,104,0.6533
+Turn over a new leaf,105,0.3042
+Turn something inside out,106,0.5463
+Turn the tables,103,0.3609
+Turn your back on something,105,0.7816
+Twist someone's arm,103,0.4581
+Up the ante,106,0.8016
+Upset the applecart,105,0.3042
+Use someone as a punching bag,104,0.4591
+Vanish into thin air,104,0.8069
+Wait on someone hand and foot,105,0.5047
+Walk on air,110,0.2158
+Walk on eggshells,103,0.4092
+Want a piece of the action,105,0.8955
+Waste one's breath,105,0.5611
+Watch one's mouth,104,0.6526
+Watch someone like a hawk,100,0.6741
+Watch your back,106,0.6973
+Wear more than one hat,108,0.4197
+Wear one's heart on their sleeve,105,0.3048
+Welcome someone with open arms,110,0.8607
+Whet someone's appetite,105,0.5724
+Wield the axe,109,0.3528
+Win brownie points,110,0.191
+Wine and dine someone,103,0.8351
+Wipe the grin off someone's face,110,0.6658
+With a vengeance,103,0.7828
+With bated breath,105,0.4193
+With one's back to the wall,108,0.4728
+Without missing a beat,105,0.6475
+Won't break the bank,110,0.6459
+Work like a charm,106,0.5367
+Wrap someone around one's little finger,105,0.2669
+Write the book on something,104,0.6043
+Zip one's lip,106,0.5751

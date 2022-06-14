@@ -14,6 +14,7 @@ library(multilevel)#for ICC
 library(arsenal)#for dataframe comparisons
 library(jtools)#for theme_apa function for plots
 library(apaTables)#for APA format tables
+library(fuzzyjoin)
 ```
 
 ```{r organize output}
@@ -34,7 +35,7 @@ ratings_include <- ratings_all %>%
 #Get participant exclusion data
 ppt_exclusions <- read_csv(file = file.path(path_in, "Ppt_Exclusions.csv"))
 #Get expression coding
-expression_coding <- read_csv(file = file.path(path_in, "Multiword_expression_categories.csv"))
+expression_coding <- read_csv(file = file.path(path_in, "Multiword_expression_categories_R1.csv"))
 #Get data for ICC analysis
 ratings_icc <- read_csv(file = file.path(path_in, "Ratings_ICC_02.03.2022.csv"))
 #Get Brysbaert 2014 concreteness ratings
@@ -218,7 +219,7 @@ names(Type.labs) <- c("Idiom/Fixed expression", "Compound noun", "Particle verb"
 ggplot(expressions_analysis, aes(x = Mean_C)) + geom_histogram(aes(y = ..density..), bins = 25, colour = 1, fill = "grey") + geom_density(lwd = 0.5, colour = 4, fill = 4, alpha = 0.25) + theme_apa() + labs(x = "Mean Concreteness") + facet_grid(. ~ Type, margins = TRUE, labeller = labeller(Type = Type.labs))
 
 #Save file
-ggsave(filename = file.path(figures_out, "Figure1_02.25.2022.png"), width = 8, height = 4)
+ggsave(filename = file.path(figures_out, "Figure1_06.06.2022.png"), width = 8, height = 4)
 ```
 
 
@@ -262,7 +263,7 @@ names(Type.labs) <- c("Idiom/Fixed expression", "Compound noun", "Particle verb"
 ggplot(conc_compare_plot, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Type, labeller = labeller(Ind_Words = Ind_Words.labs, Type = Type.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Words") + theme(text = element_text(size = 20))
 
 #Save file
-ggsave(filename = file.path(figures_out, "Figure2_02.25.2022.png"), width = 12, height = 12)
+ggsave(filename = file.path(figures_out, "Figure2_06.06.2022.png"), width = 12, height = 12)
 ```
 
 ```{r compare to concreteness of content words in the expressions}
@@ -305,6 +306,22 @@ names(Type.labs) <- c("Idiom/Fixed expression", "Compound noun", "Particle verb"
 ggplot(conc_compare_plot_nof, aes(Mean_C, Mean_Conc_Words)) + geom_point(size = 0.25, colour = "black", alpha = 0.15) + geom_smooth(method = lm, lwd = 1, colour = 4) + facet_grid(Ind_Words ~ Type, labeller = labeller(Ind_Words = Ind_Words.labs, Type = Type.labs)) + xlab ("Concreteness of Expression") + ylab("Concreteness of Individual Content Words") + theme(text = element_text(size = 20))
 
 #Save file
-ggsave(filename = file.path(figures_out, "Figure3_02.25.2022.png"), width = 12, height = 12)
+ggsave(filename = file.path(figures_out, "Figure3_06.06.2022.png"), width = 12, height = 12)
+```
+
+```{r % of participants for unknown items}
+master_unknown <- master_ratings %>% 
+  filter(is.na(Mean_C)) %>% 
+  mutate(Total_N = N_Rate + N_Unknown)
+
+master_rate <- master_unknown %>% 
+  filter(!is.na(Total_N))
+
+master_norate <- master_unknown %>% 
+  filter(is.na(Total_N))
+
+unknown <- sum(master_rate$N_Unknown) + sum(master_norate$N_Unknown)
+allrate <- sum(master_rate$Total_N) + sum(master_norate$N_Unknown)
+unknown/allrate
 ```
 
